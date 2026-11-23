@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendidikan | Pondok Modern IIBS El-'Azam</title>
+    <meta name="description" content="Kurikulum Pondok, Kurikulum Sekolah, Ekstrakurikuler, dan Jadwal Harian & Mingguan Pondok Modern IIBS El-'Azam Kuningan.">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sky-deep: #1E5A82;
+            --sky-tint: #F4F9FC;
+            --gold-accent: #C5A059;
+            --ink-dark: #182230;
+            --ink-body: #475467;
+            --ink-muted: #667085;
+            --line: #E4E7EC;
+            --white: #FFFFFF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--white); color: var(--ink-dark); font-size: 13.5px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.01em; }
+
+        header {
+            background: var(--sky-deep);
+            padding: 6px 6%;
+            min-height: 64px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--gold-accent);
+            transition: padding 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 6px 6%;
+            min-height: 58px;
+            box-shadow: 0 6px 20px rgba(30, 90, 130, 0.25);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            border-bottom: none;
+            min-height: 44px;
+            position: relative;
+        }
+
+        .brand-logo-wrap {
+            display: flex;
+            align-items: center;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .brand-logo-circle {
+            height: 52px;
+            min-width: 52px;
+            padding: 0;
+            border-radius: 4px;
+            background: transparent;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: visible;
+            box-shadow: none;
+        }
+
+        .brand-logo-circle img {
+            max-height: 52px;
+            width: auto;
+            max-width: 160px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .brand-wordmark {
+            display: none;
+            flex-direction: column;
+            animation: fadeSlideIn 0.35s ease forwards;
+        }
+
+        .brand-wordmark small {
+            font-size: 9.5px;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            color: #FDE68A;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .brand-wordmark strong {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 21px;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 0.8px;
+            line-height: 1.1;
+        }
+
+        .brand, .brand:visited, .brand:hover, .brand-wordmark, .brand-wordmark small, .brand-wordmark strong {
+            text-decoration: none !important;
+            border-bottom: none !important;
+        }
+
+        header.scrolled .brand-logo-wrap { display: none; }
+        header.scrolled .brand-wordmark { display: flex; }
+
+        @keyframes fadeSlideIn {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        nav ul { list-style: none; display: flex; align-items: center; gap: 28px; }
+        nav ul li { position: relative; }
+        nav ul li > a {
+            color: rgba(255, 255, 255, 0.94); text-decoration: none; font-size: 12.5px; font-weight: 500;
+            letter-spacing: 0.3px; padding: 8px 0; display: inline-block; border-bottom: 1.5px solid transparent; transition: 0.2s;
+        }
+        nav ul li > a:hover, nav ul li > a.active { color: var(--white); border-bottom-color: #FDE68A; }
+
+        .dropdown-menu {
+            display: none; position: absolute; top: 100%; left: 0; background: var(--white);
+            min-width: 225px; border: 1px solid var(--line); border-top: 2px solid var(--sky-deep);
+            box-shadow: 0 12px 28px rgba(16, 24, 40, 0.08); padding: 6px 0; z-index: 999;
+        }
+        nav ul li:hover > .dropdown-menu { display: block; }
+        .dropdown-menu a {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 9px 16px; color: var(--ink-body); text-decoration: none; font-size: 12px; transition: 0.15s;
+        }
+        .dropdown-menu a:hover { background: var(--sky-tint); color: var(--sky-deep); font-weight: 500; }
+
+        .has-submenu { position: relative; }
+        .submenu {
+            display: none; position: absolute; top: -2px; left: 100%; background: var(--white);
+            min-width: 195px; border: 1px solid var(--line); border-top: 2px solid var(--gold-accent);
+            box-shadow: 0 12px 28px rgba(16, 24, 40, 0.1); padding: 6px 0; z-index: 1000;
+        }
+        .has-submenu:hover > .submenu { display: block; }
+
+        .header-actions { display: flex; align-items: center; gap: 8px; }
+
+        .icon-search {
+            background: transparent; border: 1px solid rgba(255, 255, 255, 0.35); color: var(--white);
+            width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;
+        }
+        .icon-search:hover { background: rgba(255, 255, 255, 0.15); }
+
+        .menu-toggle {
+            display: none; background: transparent; border: 1px solid rgba(255, 255, 255, 0.35); color: var(--white);
+            width: 32px; height: 32px; border-radius: 6px; align-items: center; justify-content: center; cursor: pointer; font-size: 16px;
+        }
+        .menu-toggle:hover { background: rgba(255, 255, 255, 0.15); }
+
+        .search-popover {
+            display: none; position: absolute; top: calc(100% + 8px); right: 6%; background: var(--white);
+            padding: 12px; border: 1px solid var(--line); border-top: 2px solid var(--sky-deep);
+            box-shadow: 0 12px 28px rgba(16, 24, 40, 0.14); z-index: 1100; width: min(340px, 88vw);
+        }
+        .search-popover.open { display: block; }
+        .search-form { display: flex; align-items: stretch; }
+        .search-form input {
+            flex: 1; min-width: 0; padding: 9px 12px; border: 1px solid #D0D5DD; border-right: none;
+            background: #F4F7F6; color: var(--ink-dark); font-size: 12.5px; outline: none;
+        }
+        .search-form input:focus { background: var(--white); border-color: var(--sky-deep); }
+        .search-form button {
+            padding: 0 16px; background: var(--sky-deep); color: var(--white); border: 1px solid var(--sky-deep);
+            font-size: 12.5px; font-weight: 500; cursor: pointer; transition: background 0.2s; white-space: nowrap;
+        }
+        .search-form button:hover { background: #164463; }
+
+        .page-hero {
+            background: var(--sky-tint);
+            border-bottom: 1px solid #D6E9F5;
+            padding: 44px 6% 36px;
+        }
+        .page-hero-inner { max-width: 1120px; margin: 0 auto; }
+        .breadcrumb { font-size: 12px; color: var(--ink-muted); margin-bottom: 12px; }
+        .breadcrumb a { color: var(--sky-deep); text-decoration: none; font-weight: 500; }
+        .page-kicker {
+            display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 1.4px;
+            text-transform: uppercase; color: var(--sky-deep); margin-bottom: 8px;
+        }
+        .page-hero h1 { font-size: 40px; color: var(--sky-deep); font-weight: 700; margin-bottom: 10px; line-height: 1.15; }
+        .page-hero p { font-size: 14px; color: var(--ink-body); max-width: 760px; }
+
+        .page-wrap { max-width: 1120px; margin: 44px auto 76px; padding: 0 6%; }
+
+        .section-block {
+            margin-bottom: 58px;
+            scroll-margin-top: 88px;
+        }
+        .section-head {
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1.5px solid var(--line);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .section-head .eyebrow {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            color: var(--sky-deep);
+            margin-bottom: 4px;
+        }
+        .section-head h2 {
+            font-size: 32px;
+            color: var(--sky-deep);
+            font-weight: 700;
+            line-height: 1.15;
+        }
+        .section-head p {
+            font-size: 13.5px;
+            color: var(--ink-muted);
+            max-width: 540px;
+        }
+
+        /* Dua kartu Kurikulum Pondok & Kurikulum Sekolah berdampingan */
+        .kurikulum-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        .kurikulum-card {
+            background: var(--white);
+            border: 1px solid #DCEAF5;
+            border-top: 3px solid var(--sky-deep);
+            border-radius: 10px;
+            padding: 28px 26px;
+            box-shadow: 0 8px 24px rgba(16, 24, 40, 0.04);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .kurikulum-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(30, 90, 130, 0.09);
+        }
+        .kurikulum-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 9px;
+            background: #FEF3C7;
+            border: 1px solid #FDE68A;
+            color: #9A6B19;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+        .kurikulum-card h3 {
+            font-size: 25px;
+            color: var(--sky-deep);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .kurikulum-card p {
+            font-size: 13.5px;
+            color: var(--ink-body);
+            margin-bottom: 16px;
+        }
+        .kurikulum-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding-top: 14px;
+            border-top: 1px solid var(--line);
+        }
+        .kurikulum-list li {
+            font-size: 12.8px;
+            color: var(--ink-body);
+            padding-left: 16px;
+            position: relative;
+        }
+        .kurikulum-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--gold-accent);
+        }
+
+        /* Bagian Ekstrakurikuler */
+        .ekskul-panel {
+            background: var(--sky-tint);
+            border: 1px solid #DCEAF5;
+            border-radius: 12px;
+            padding: 30px 28px;
+        }
+        .ekskul-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .ekskul-top h3 {
+            font-size: 26px;
+            color: var(--sky-deep);
+            font-weight: 700;
+        }
+        .ekskul-top span {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--sky-deep);
+            background: var(--white);
+            border: 1px solid #C8DFEE;
+            padding: 5px 12px;
+            border-radius: 999px;
+        }
+        .ekskul-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .ekskul-chip {
+            background: var(--white);
+            color: var(--ink-dark);
+            border: 1px solid #D6E9F5;
+            border-radius: 999px;
+            padding: 8px 16px;
+            font-size: 12.5px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .ekskul-chip:hover {
+            background: var(--sky-deep);
+            color: var(--white);
+            border-color: var(--sky-deep);
+        }
+
+        /* Bagian Jadwal Harian & Mingguan */
+        .jadwal-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 1fr;
+            gap: 24px;
+        }
+        .jadwal-box {
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 24px;
+        }
+        .jadwal-box h3 {
+            font-size: 24px;
+            color: var(--sky-deep);
+            font-weight: 700;
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--line);
+        }
+        .jadwal-rows {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .jadwal-row {
+            display: grid;
+            grid-template-columns: 112px 1fr;
+            gap: 12px;
+            font-size: 13px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed #ECEFF3;
+        }
+        .jadwal-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .jadwal-time {
+            font-weight: 600;
+            color: var(--sky-deep);
+        }
+        .jadwal-desc {
+            color: var(--ink-body);
+        }
+
+        footer {
+            background: var(--sky-deep); color: rgba(255, 255, 255, 0.88);
+            padding: 44px 6% 22px; border-top: 2px solid var(--gold-accent);
+        }
+        .footer-inner {
+            max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+            gap: 36px; padding-bottom: 28px; border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+        }
+        .footer-inner h4 { font-family: 'Cormorant Garamond', serif; font-size: 17px; color: #FDE68A; margin-bottom: 12px; }
+        .footer-inner p, .footer-inner li { font-size: 12.5px; line-height: 1.7; list-style: none; margin-bottom: 6px; }
+        .footer-inner a { color: rgba(255, 255, 255, 0.88); text-decoration: none; }
+        .footer-inner a:hover { color: #FDE68A; }
+        .footer-bottom {
+            max-width: 1180px; margin: 18px auto 0; display: flex; justify-content: space-between;
+            font-size: 11.5px; color: rgba(255, 255, 255, 0.72);
+        }
+
+        @media (max-width: 900px) {
+            header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .menu-toggle {
+                display: flex;
+                order: 1;
+            }
+
+            .brand {
+                order: 2;
+                margin: 0 auto;
+            }
+
+            .header-actions {
+                order: 3;
+            }
+
+            .search-popover {
+                right: 6%;
+            }
+
+            nav {
+                display: none; position: absolute; top: 100%; left: 0; right: 0;
+                background: var(--sky-deep); border-bottom: 2px solid var(--gold-accent);
+                padding: 12px 6% 18px; box-shadow: 0 12px 24px rgba(15, 42, 68, 0.25);
+            }
+            nav.open { display: block; }
+            nav ul { flex-direction: column; align-items: flex-start; gap: 8px; }
+            nav ul li { width: 100%; }
+            nav ul li:hover > .dropdown-menu { display: none; }
+            .dropdown-menu {
+                position: static; display: none; background: rgba(255, 255, 255, 0.06);
+                border: none; border-left: 2px solid #FDE68A; box-shadow: none;
+                padding: 4px 0 4px 12px; margin-top: 4px;
+            }
+            nav ul li.dropdown.open > .dropdown-menu { display: block; }
+            .dropdown-menu a { color: rgba(255, 255, 255, 0.9); padding: 6px 8px; }
+            .dropdown-menu a:hover { background: transparent; color: #FDE68A; }
+            .has-submenu:hover > .submenu { display: none; }
+            .submenu {
+                position: static; display: none; background: rgba(255, 255, 255, 0.05);
+                border: none; border-left: 2px solid var(--gold-accent); box-shadow: none;
+                padding: 2px 0 2px 14px; margin: 2px 0 6px;
+            }
+            .has-submenu.open > .submenu { display: block; }
+
+            .kurikulum-grid, .jadwal-grid { grid-template-columns: 1fr; }
+            .page-hero h1 { font-size: 30px; }
+            .footer-inner { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 6px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="main-header">
+        <button class="menu-toggle" onclick="toggleMenu()" title="Buka Menu" aria-label="Buka Menu">&#9776;</button>
+
+        <a href="index.html" class="brand" title="Pondok Modern IIBS El-'Azam">
+            <div class="brand-logo-wrap">
+                <div class="brand-logo-circle">
+                    <img src="images/Logo PONDOK.png" alt="Logo Pondok Modern IIBS El-'Azam">
+                </div>
+            </div>
+
+            <div class="brand-wordmark">
+                <small>Integrated Islamic Boarding School</small>
+                <strong>IIBS EL-'AZAM</strong>
+            </div>
+        </a>
+
+        <nav id="main-nav">
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li class="dropdown">
+                    <a href="profil.html" onclick="toggleDropdown(event, this)">Tentang Pondok &#9662;</a>
+                    <div class="dropdown-menu">
+                        <a href="profil.html#muqoddimah">Muqoddimah</a>
+                        <a href="profil.html#pimpinan">Profil Pimpinan</a>
+                        <div class="has-submenu">
+                            <a href="profil.html#falsafah" onclick="toggleSubmenu(event, this)">Falsafah &rsaquo;</a>
+                            <div class="submenu">
+                                <a href="panca-jiwa.html">Panca Jiwa</a>
+                                <a href="motto.html">Motto</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="pendidikan.html" class="active" onclick="toggleDropdown(event, this)">Pendidikan &#9662;</a>
+                    <div class="dropdown-menu">
+                        <a href="pendidikan.html#kurikulum">Kurikulum Pondok &amp; Sekolah</a>
+                        <a href="pendidikan.html#ekskul">Ekstrakurikuler</a>
+                        <a href="pendidikan.html#jadwal">Jadwal Harian &amp; Mingguan</a>
+                    </div>
+                </li>
+                <li><a href="galeri.html">Warta &amp; Arsip</a></li>
+                <li class="dropdown">
+                    <a href="pendaftaran.html" onclick="toggleDropdown(event, this)">Pendaftaran &#9662;</a>
+                    <div class="dropdown-menu">
+                        <a href="pendaftaran.html#syarat">Syarat &amp; Jadwal PSB 2027</a>
+                        <a href="pendaftaran.html#biaya">Pembiayaan Pendidikan</a>
+                        <a href="pendaftaran.html#perlengkapan">Perlengkapan Santri</a>
+                    </div>
+                </li>
+                <li><a href="kontak.html">Kontak &amp; Alamat</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-actions">
+            <button class="icon-search" id="searchToggleBtn" onclick="toggleSearch(event)" title="Cari Informasi" aria-label="Cari Informasi">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </button>
+        </div>
+
+        <div class="search-popover" id="searchPopover">
+            <form class="search-form" onsubmit="submitSearch(event)">
+                <input type="text" id="searchInput" placeholder="Cari informasi..." autocomplete="off">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="page-hero-inner">
+            <div class="breadcrumb">
+                <a href="index.html">Beranda</a> &rsaquo; Pendidikan
+            </div>
+            <span class="page-kicker">Pendidikan Terpadu</span>
+            <h1>Kurikulum &amp; Ekstrakurikuler</h1>
+            <p>Kurikulum pondok dan sekolah membentuk santri yang unggul dalam adab, wawasan, keterampilan, serta kesiapan menghadapi masa depan[cite: 9].</p>
+        </div>
+    </section>
+
+    <main class="page-wrap">
+        <section id="kurikulum" class="section-block">
+            <div class="section-head">
+                <div>
+                    <span class="eyebrow">Sistem Pembelajaran</span>
+                    <h2>Kurikulum Pondok &amp; Sekolah</h2>
+                </div>
+                <p>Perpaduan pembinaan kepesantrenan berasrama dengan pendidikan formal untuk membentuk keseimbangan adab dan prestasi akademik[cite: 9].</p>
+            </div>
+
+            <div class="kurikulum-grid">
+                <article class="kurikulum-card">
+                    <div class="kurikulum-icon" aria-hidden="true">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                    </div>
+                    <h3>Kurikulum Pondok</h3>
+                    <p>Mengacu pada Kurikulum Pondok Modern Gontor untuk membina kehidupan berasrama, penguasaan bahasa, ibadah, kepemimpinan, dan akhlak[cite: 9].</p>
+                    <ul class="kurikulum-list">
+                        <li>Pembiasaan shalat berjamaah, tahsin/tahfidz, serta kajian keislaman</li>
+                        <li>Lingkungan dwibahasa aktif (Bahasa Arab &amp; Bahasa Inggris)</li>
+                        <li>Pembinaan kemandirian, disiplin asrama, dan organisasi santri</li>
+                    </ul>
+                </article>
+
+                <article class="kurikulum-card">
+                    <div class="kurikulum-icon" aria-hidden="true">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                            <path d="M6 12v5c0 2 6 3 6 3s6-1 6-3v-5"></path>
+                        </svg>
+                    </div>
+                    <h3>Kurikulum Sekolah</h3>
+                    <p>Pendidikan formal tingkat SMP/MTs dan SMA/MA sederajat yang mendukung prestasi akademik serta pengembangan potensi santri[cite: 9].</p>
+                    <ul class="kurikulum-list">
+                        <li>Mata pelajaran umum &amp; sains terintegrasi nilai-nilai Islam</li>
+                        <li>Penguatan literasi, numerasi, dan persiapan jenjang lanjutan</li>
+                        <li>Bimbingan belajar terarah di lingkungan sekolah dan asrama</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section id="ekskul" class="section-block">
+            <div class="section-head">
+                <div>
+                    <span class="eyebrow">Minat, Bakat &amp; Keterampilan</span>
+                    <h2>Ekstrakurikuler</h2>
+                </div>
+                <p>Wadah pengembangan potensi santri di luar jam pelajaran formal agar terampil, kreatif, dan tangguh[cite: 9].</p>
+            </div>
+
+            <div class="ekskul-panel">
+                <div class="ekskul-top">
+                    <h3>Pilihan Ekstrakurikuler</h3>
+                    <span>15 Bidang Kegiatan Santri</span>
+                </div>
+
+                <div class="ekskul-chips">
+                    <span class="ekskul-chip">Tahfidzul Qur'an</span>
+                    <span class="ekskul-chip">Naghmatul Qur'an</span>
+                    <span class="ekskul-chip">Bahasa Arab &amp; Inggris</span>
+                    <span class="ekskul-chip">Kajian Kitab</span>
+                    <span class="ekskul-chip">Kewirausahaan</span>
+                    <span class="ekskul-chip">Marching Band</span>
+                    <span class="ekskul-chip">Komputer &amp; Design Grafis</span>
+                    <span class="ekskul-chip">Pidato 3 Bahasa</span>
+                    <span class="ekskul-chip">Marawis &amp; Hadroh</span>
+                    <span class="ekskul-chip">Teater &amp; Nasyid</span>
+                    <span class="ekskul-chip">Kaligrafi &amp; Seni Lukis</span>
+                    <span class="ekskul-chip">Pramuka</span>
+                    <span class="ekskul-chip">Sepak Bola, Voli, Basket</span>
+                    <span class="ekskul-chip">Photography &amp; Jurnalistik</span>
+                    <span class="ekskul-chip">Silat Merpati Putih</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="jadwal" class="section-block">
+            <div class="section-head">
+                <div>
+                    <span class="eyebrow">Ritme Kehidupan Asrama</span>
+                    <h2>Jadwal Harian &amp; Mingguan</h2>
+                </div>
+                <p>Pengaturan waktu terstruktur selama 24 jam untuk menyeimbangkan ibadah, belajar, olahraga, dan istirahat santri.</p>
+            </div>
+
+            <div class="jadwal-grid">
+                <div class="jadwal-box">
+                    <h3>Jadwal Harian Santri</h3>
+                    <div class="jadwal-rows">
+                        <div class="jadwal-row">
+                            <span class="jadwal-time">03.45 &ndash; 06.30</span>
+                            <span class="jadwal-desc">Bangun pagi, shalat Shubuh berjamaah, tadarus/kosakata, dan persiapan ke sekolah</span>
+                        </div>
+                        <div class="jadwal-row">
+                            <span class="jadwal-time">07.00 &ndash; 12.15</span>
+                            <span class="jadwal-desc">Kegiatan belajar mengajar formal &amp; kepesantrenan</span>
+                        </div>
+                        <div class="jadwal-row">
+                            <span class="jadwal-time">12.15 &ndash; 14.30</span>
+                            <span class="jadwal-desc">Shalat Dzuhur berjamaah, makan siang, dan istirahat</span>
+                        </div>
+                        <div class="jadwal-row">
+                            <span class="jadwal-time">14.30 &ndash; 17.30</span>
+                            <span class="jadwal-desc">KBM sore / ekstrakurikuler, olahraga, dan shalat Ashar berjamaah</span>
+                        </div>
+                        <div class="jadwal-row">
+                            <span class="jadwal-time">17.30 &ndash; 22.00</span>
+                            <span class="jadwal-desc">Shalat Maghrib &amp; Isya berjamaah, muroja'ah/belajar malam, dan tidur</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="jadwal-box">
+                    <h3>Agenda Mingguan</h3>
+                    <div class="jadwal-rows">
+                        <div class="jadwal-row">
+                            <span class="jadwal-time">Senin &ndash; Kamis</span>
+                            <span class="jadwal-desc">Pembelajaran rutin harian, setoran hafalan/bahasa, dan pembinaan asrama</span>
+                        </div>
+                        <div class="jadwal-row">
+                            <span class="jadwal-time">Kamis Sore</span>
+                            <span class="jadwal-desc">Latihan muhadhoroh / pidato dan penguatan mental tampil di depan umum</span>
+                        </div>
+                        <div class="jadwal-row">
+                            <span class="jadwal-time">Jumat</span>
+                            <span class="jadwal-desc">Kerja bakti lingkungan pondok, shalat Jumat berjamaah, dan kegiatan seni/rohani</span>
+                        </div>
+                        <div class="jadwal-row">
+                            <span class="jadwal-time">Sabtu &ndash; Ahad</span>
+                            <span class="jadwal-desc">Latihan ekstrakurikuler, olahraga bersama, dan penataan keperluan pribadi</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <div>
+                <h4>Pondok Modern IIBS El-'Azam</h4>
+                <p>"Mendidik dengan Iman, Ilmu, dan Amal." Lembaga pendidikan Islam berbasis sistem pesantren modern di kawasan sejuk kaki Gunung Ciremai, Kuningan[cite: 4].</p>
+            </div>
+            <div>
+                <h4>Tautan Halaman</h4>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="profil.html">Muqoddimah</a></li>
+                    <li><a href="pendidikan.html#kurikulum">Kurikulum Pondok &amp; Sekolah</a></li>
+                    <li><a href="pendidikan.html#ekskul">Ekstrakurikuler</a></li>
+                    <li><a href="pendaftaran.html">Pendaftaran Santri Baru (PSB)</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Sekretariat Pondok</h4>
+                <ul>
+                    <li>Blok Reuma Dusun Karang Anyar, Ds. Ciwiru, Kec. Pasawahan, Kab. Kuningan 45559</li>
+                    <li>Telepon / WA: <a href="https://wa.me/62895401985294" target="_blank">0895401985294</a></li>
+                    <li>Email: pondokmoderniibselazam@gmail.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Pondok Modern IIBS El-'Azam &mdash; Integrated Islamic Boarding School</span>
+            <span>Pasawahan, Kuningan, Jawa Barat</span>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById("main-nav");
+            if (nav) nav.classList.toggle("open");
+        }
+
+        function toggleDropdown(event, linkEl) {
+            if (window.innerWidth <= 900) {
+                event.preventDefault();
+                linkEl.parentElement.classList.toggle("open");
+            }
+        }
+
+        function toggleSubmenu(event, linkEl) {
+            if (window.innerWidth <= 900) {
+                event.preventDefault();
+                event.stopPropagation();
+                linkEl.parentElement.classList.toggle("open");
+            }
+        }
+
+        function toggleSearch(event) {
+            event.stopPropagation();
+            const popover = document.getElementById("searchPopover");
+            const input = document.getElementById("searchInput");
+            if (!popover) return;
+            popover.classList.toggle("open");
+            if (popover.classList.contains("open") && input) {
+                setTimeout(() => input.focus(), 50);
+            }
+        }
+
+        document.addEventListener("click", function(event) {
+            const popover = document.getElementById("searchPopover");
+            const btn = document.getElementById("searchToggleBtn");
+            if (popover && popover.classList.contains("open")) {
+                if (!popover.contains(event.target) && (!btn || !btn.contains(event.target))) {
+                    popover.classList.remove("open");
+                }
+            }
+        });
+
+        function submitSearch(event) {
+            event.preventDefault();
+            const input = document.getElementById("searchInput");
+            const kata = input ? input.value.trim() : "";
+            if (!kata) return;
+            const k = kata.toLowerCase();
+            if (k.includes("panca")) window.location.href = "panca-jiwa.html";
+            else if (k.includes("motto")) window.location.href = "motto.html";
+            else if (k.includes("muqoddimah") || k.includes("tentang")) window.location.href = "profil.html";
+            else if (k.includes("ekskul") || k.includes("ekstrakurikuler")) window.location.href = "pendidikan.html#ekskul";
+            else if (k.includes("jadwal")) window.location.href = "pendidikan.html#jadwal";
+            else if (k.includes("kurikulum")) window.location.href = "pendidikan.html#kurikulum";
+            else if (k.includes("biaya") || k.includes("syarat") || k.includes("daftar")) window.location.href = "pendaftaran.html";
+            else if (k.includes("kontak") || k.includes("alamat")) window.location.href = "kontak.html";
+            else window.location.href = "galeri.html";
+        }
+
+        window.addEventListener("scroll", function() {
+            const header = document.getElementById("main-header");
+            if (!header) return;
+            if (window.scrollY > 50) header.classList.add("scrolled");
+            else header.classList.remove("scrolled");
+        });
+    </script>
+</body>
+</html>

@@ -15,6 +15,8 @@
             --sky-soft: #1E5A82;
             --sky-tint: #F4F9FC;
             --gold-accent: #C5A059;
+            --gold-btn: #EAB308;
+            --gold-btn-hover: #CA8A04;
             --ink-dark: #182230;
             --ink-body: #475467;
             --ink-muted: #667085;
@@ -135,7 +137,7 @@
 
         .dropdown-menu {
             display: none; position: absolute; top: 100%; left: 0; background: var(--white);
-            min-width: 225px; border: 1px solid var(--line); border-top: 2px solid var(--sky-deep);
+            min-width: 240px; border: 1px solid var(--line); border-top: 2px solid var(--sky-deep);
             box-shadow: 0 12px 28px rgba(16, 24, 40, 0.08); padding: 6px 0; z-index: 999;
         }
         nav ul li:hover > .dropdown-menu { display: block; }
@@ -156,7 +158,27 @@
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+        }
+
+        .btn-daftar-nav {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 7px 16px;
+            background-color: var(--gold-btn);
+            color: var(--ink-dark) !important;
+            text-decoration: none !important;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 999px;
+            white-space: nowrap;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .btn-daftar-nav:hover {
+            background-color: var(--gold-btn-hover);
+            color: var(--ink-dark) !important;
         }
 
         .icon-search {
@@ -415,6 +437,11 @@
                 order: 3;
             }
 
+            .btn-daftar-nav {
+                padding: 6px 12px;
+                font-size: 11.5px;
+            }
+
             .search-popover {
                 right: 6%;
             }
@@ -530,18 +557,18 @@
                 <li class="dropdown">
                     <a href="kurikulum.html" onclick="toggleDropdown(event, this)">Pendidikan &#9662;</a>
                     <div class="dropdown-menu">
-                        <a href="kurikulum.html#kurikulum">Kurikulum Pondok &amp; Sekolah</a>
-                        <a href="kurikulum.html#ekskul">Ekstrakurikuler</a>
-                        <a href="kurikulum.html#jadwal">Jadwal Harian &amp; Mingguan</a>
+                        <a href="kurikulum.html">Kurikulum Pondok &amp; Sekolah</a>
+                        <a href="ekstrakurikuler.html">Ekstrakurikuler</a>
+                        <a href="jadwal.html">Jadwal Harian &amp; Mingguan</a>
                     </div>
                 </li>
                 <li><a href="galeri.html">Warta &amp; Arsip</a></li>
                 <li class="dropdown">
-                    <a href="pendaftaran.html" onclick="toggleDropdown(event, this)">Pendaftaran &#9662;</a>
+                    <a href="psb.html" onclick="toggleDropdown(event, this)">Pendaftaran &#9662;</a>
                     <div class="dropdown-menu">
-                        <a href="pendaftaran.html#syarat">Syarat &amp; Jadwal PSB 2027</a>
-                        <a href="pendaftaran.html#biaya">Pembiayaan Pendidikan</a>
-                        <a href="pendaftaran.html#perlengkapan">Perlengkapan Santri</a>
+                        <a href="psb.html">Penerimaan Santri Baru (PSB)</a>
+                        <a href="biaya.html">Pembiayaan Pendidikan</a>
+                        <a href="perlengkapan.html">Perlengkapan Santri</a>
                     </div>
                 </li>
                 <li><a href="kontak.html">Kontak &amp; Alamat</a></li>
@@ -549,6 +576,12 @@
         </nav>
 
         <div class="header-actions">
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLScqXFZ52vTLcIygKnMtI5K5_jBDjHdJ_qKKoQYLFE7EmR-4Og/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-daftar-nav"
+            >Daftar Sekarang</a>
             <button class="icon-search" id="searchToggleBtn" onclick="toggleSearch(event)" title="Cari Informasi" aria-label="Cari Informasi">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="11" cy="11" r="8"></circle>
@@ -645,8 +678,12 @@
                 <ul>
                     <li><a href="panca-jiwa.html">Panca Jiwa Pondok</a></li>
                     <li><a href="motto.html">Motto Pondok</a></li>
-                    <li><a href="kurikulum.html">Kurikulum &amp; Jadwal Harian</a></li>
-                    <li><a href="pendaftaran.html">Pendaftaran Santri Baru (PSB)</a></li>
+                    <li><a href="kurikulum.html">Kurikulum Pondok &amp; Sekolah</a></li>
+                    <li><a href="ekstrakurikuler.html">Ekstrakurikuler</a></li>
+                    <li><a href="jadwal.html">Jadwal Harian &amp; Mingguan</a></li>
+                    <li><a href="psb.html">Penerimaan Santri Baru (PSB)</a></li>
+                    <li><a href="biaya.html">Pembiayaan Pendidikan</a></li>
+                    <li><a href="perlengkapan.html">Perlengkapan Santri</a></li>
                 </ul>
             </div>
             <div>
@@ -718,9 +755,17 @@
                 window.location.href = "panca-jiwa.html";
             } else if (k.includes("motto")) {
                 window.location.href = "motto.html";
-            } else if (k.includes("biaya") || k.includes("syarat") || k.includes("daftar")) {
-                window.location.href = "pendaftaran.html";
-            } else if (k.includes("jadwal") || k.includes("kurikulum") || k.includes("ekskul")) {
+            } else if (k.includes("perlengkapan")) {
+                window.location.href = "perlengkapan.html";
+            } else if (k.includes("biaya") || k.includes("pembiayaan")) {
+                window.location.href = "biaya.html";
+            } else if (k.includes("syarat") || k.includes("daftar") || k.includes("psb")) {
+                window.location.href = "psb.html";
+            } else if (k.includes("jadwal")) {
+                window.location.href = "jadwal.html";
+            } else if (k.includes("ekskul") || k.includes("ekstrakurikuler")) {
+                window.location.href = "ekstrakurikuler.html";
+            } else if (k.includes("kurikulum") || k.includes("pondok") || k.includes("sekolah")) {
                 window.location.href = "kurikulum.html";
             } else if (k.includes("kontak") || k.includes("alamat")) {
                 window.location.href = "kontak.html";

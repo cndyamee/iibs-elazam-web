@@ -342,11 +342,11 @@
                 </li>
                 <li><a href="galeri.html">Warta &amp; Arsip</a></li>
                 <li class="dropdown">
-                    <a href="pendaftaran.html" onclick="toggleDropdown(event, this)">Pendaftaran &#9662;</a>
+                    <a href="psb.html" onclick="toggleDropdown(event, this)">Pendaftaran &#9662;</a>
                     <div class="dropdown-menu">
-                        <a href="pendaftaran.html#syarat">Syarat &amp; Jadwal PSB 2027</a>
-                        <a href="pendaftaran.html#biaya">Pembiayaan Pendidikan</a>
-                        <a href="pendaftaran.html#perlengkapan">Perlengkapan Santri</a>
+                        <a href="psb.html">Syarat &amp; Jadwal PSB 2027</a>
+                        <a href="biaya.html">Pembiayaan Pendidikan</a>
+                        <a href="perlengkapan.html">Perlengkapan Santri</a>
                     </div>
                 </li>
                 <li><a href="kontak.html">Kontak &amp; Alamat</a></li>
@@ -465,7 +465,7 @@
                     <li><a href="index.html">Beranda</a></li>
                     <li><a href="panca-jiwa.html">Panca Jiwa Pondok</a></li>
                     <li><a href="motto.html">Motto Pondok</a></li>
-                    <li><a href="pendaftaran.html">Pendaftaran Santri Baru (PSB)</a></li>
+                    <li><a href="psb.html">Pendaftaran Santri Baru (PSB)</a></li>
                 </ul>
             </div>
             <div>
@@ -533,7 +533,7 @@
             const k = kata.toLowerCase();
             if (k.includes("panca")) window.location.href = "panca-jiwa.html";
             else if (k.includes("motto")) window.location.href = "motto.html";
-            else if (k.includes("biaya") || k.includes("syarat") || k.includes("daftar")) window.location.href = "pendaftaran.html";
+            else if (k.includes("biaya") || k.includes("syarat") || k.includes("daftar")) window.location.href = "psb.html";
             else if (k.includes("jadwal") || k.includes("kurikulum") || k.includes("ekskul")) window.location.href = "kurikulum.html";
             else if (k.includes("kontak") || k.includes("alamat")) window.location.href = "kontak.html";
             else window.location.href = "galeri.html";

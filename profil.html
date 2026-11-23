@@ -336,18 +336,24 @@
                 </li>
                 <li><a href="galeri.html">Warta &amp; Arsip</a></li>
                 <li class="dropdown">
-                    <a href="pendaftaran.html" onclick="toggleDropdown(event, this)">Pendaftaran &#9662;</a>
+                    <a href="psb.html" onclick="toggleDropdown(event, this)">Pendaftaran &#9662;</a>
                     <div class="dropdown-menu">
-                        <a href="pendaftaran.html#syarat">Syarat &amp; Jadwal PSB 2027</a>
-                        <a href="pendaftaran.html#biaya">Pembiayaan Pendidikan</a>
-                        <a href="pendaftaran.html#perlengkapan">Perlengkapan Santri</a>
+                        <a href="psb.html">Syarat &amp; Jadwal PSB 2027</a>
+                        <a href="biaya.html">Pembiayaan Pendidikan</a>
+                        <a href="perlengkapan.html">Perlengkapan Santri</a>
                     </div>
                 </li>
                 <li><a href="kontak.html">Kontak &amp; Alamat</a></li>
             </ul>
         </nav>
 
-        <div class="header-actions">
+       <div class="header-actions">
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLScqXFZ52vTLcIygKnMtI5K5_jBDjHdJ_qKKoQYLFE7EmR-4Og/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-daftar-nav"
+            >Daftar Sekarang</a>
             <button class="icon-search" id="searchToggleBtn" onclick="toggleSearch(event)" title="Cari Informasi" aria-label="Cari Informasi">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="11" cy="11" r="8"></circle>
@@ -422,7 +428,7 @@
                     <li><a href="profil.html">Muqoddimah</a></li>
                     <li><a href="panca-jiwa.html">Panca Jiwa Pondok</a></li>
                     <li><a href="motto.html">Motto Pondok</a></li>
-                    <li><a href="pendaftaran.html">Pendaftaran Santri Baru (PSB)</a></li>
+                    <li><a href="psb.html">Pendaftaran Santri Baru (PSB)</a></li>
                 </ul>
             </div>
             <div>
@@ -491,7 +497,7 @@
             if (k.includes("panca")) window.location.href = "panca-jiwa.html";
             else if (k.includes("motto")) window.location.href = "motto.html";
             else if (k.includes("muqoddimah") || k.includes("tentang")) window.location.href = "profil.html";
-            else if (k.includes("biaya") || k.includes("syarat") || k.includes("daftar")) window.location.href = "pendaftaran.html";
+            else if (k.includes("biaya") || k.includes("syarat") || k.includes("daftar")) window.location.href = "psb.html";
             else if (k.includes("jadwal") || k.includes("kurikulum") || k.includes("ekskul")) window.location.href = "kurikulum.html";
             else if (k.includes("kontak") || k.includes("alamat")) window.location.href = "kontak.html";
             else window.location.href = "galeri.html";

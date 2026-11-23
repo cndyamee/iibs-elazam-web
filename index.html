@@ -26,7 +26,6 @@
         body { background-color: var(--white); color: var(--ink-dark); font-size: 13.5px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
         h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.01em; }
 
-        /* Header Utama Biru Falsafah Pondok */
         header {
             background: var(--sky-deep);
             padding: 6px 6%;
@@ -47,7 +46,6 @@
             box-shadow: 0 6px 20px rgba(30, 90, 130, 0.25);
         }
 
-        /* Brand Logo & Transisi Teks saat Scroll */
         .brand {
             display: flex;
             align-items: center;
@@ -127,7 +125,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Navigasi */
         nav ul { list-style: none; display: flex; align-items: center; gap: 28px; }
         nav ul li { position: relative; }
         nav ul li > a {
@@ -157,7 +154,6 @@
         }
         .icon-search:hover { background: rgba(255, 255, 255, 0.15); }
 
-        /* Kotak Search Melayang */
         .search-popover {
             display: none;
             position: absolute;
@@ -229,7 +225,6 @@
         }
         .menu-toggle:hover { background: rgba(255, 255, 255, 0.15); }
 
-        /* Hero Gambar Ikonik Pondok Bernuansa Biru */
         .hero-iconic {
             position: relative;
             width: 100%;
@@ -297,7 +292,6 @@
             max-width: 600px;
         }
 
-        /* Pernyataan Visi & Pembentukan Santri */
         .vision-statement {
             max-width: 960px;
             margin: 56px auto 24px;
@@ -326,7 +320,6 @@
             line-height: 1.75;
         }
 
-        /* Falsafah Pondok */
         .falsafah-section { max-width: 1180px; margin: 54px auto 48px; padding: 0 4%; }
         .tab-header-line {
             border-bottom: 1.5px solid var(--sky-deep);
@@ -361,7 +354,6 @@
         }
         .btn-editorial:hover { border-color: var(--sky-deep); color: var(--sky-deep); box-shadow: 0 4px 12px rgba(30, 90, 130, 0.12); }
 
-        /* Kanal Informasi Harian */
         .channel-strip-wrap { max-width: 1180px; margin: 48px auto 64px; padding: 0 4%; }
         .channel-strip {
             background-color: var(--sky-tint); border: 1px solid #D6E9F5; border-left: 3px solid var(--sky-deep);
@@ -378,7 +370,6 @@
         .link-minimal.solid { background: var(--sky-deep); color: var(--white); }
         .link-minimal.solid:hover { background: #164463; }
 
-        /* Footer Disamakan Biru Falsafah Pondok */
         footer {
             background: var(--sky-deep);
             color: rgba(255, 255, 255, 0.88); padding: 44px 6% 22px; border-top: 2px solid var(--gold-accent);
@@ -395,28 +386,23 @@
 
         @media (max-width: 900px) {
             header {
-                position: sticky;
-                display: grid;
-                grid-template-columns: 40px 1fr auto;
+                display: flex;
+                justify-content: space-between;
                 align-items: center;
-                gap: 8px;
             }
 
             .menu-toggle {
                 display: flex;
-                grid-column: 1;
-                justify-self: start;
+                order: 1;
             }
 
             .brand {
-                grid-column: 2;
-                justify-self: center;
-                margin: 0;
+                order: 2;
+                margin: 0 auto;
             }
 
             .header-actions {
-                grid-column: 3;
-                justify-self: end;
+                order: 3;
             }
 
             .search-popover {
@@ -485,6 +471,8 @@
 <body>
 
     <header id="main-header">
+        <button class="menu-toggle" onclick="toggleMenu()" title="Buka Menu" aria-label="Buka Menu">&#9776;</button>
+
         <a href="index.html" class="brand" title="Pondok Modern IIBS El-'Azam">
             <div class="brand-logo-wrap">
                 <div class="brand-logo-circle">
@@ -537,7 +525,6 @@
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
             </button>
-            <button class="menu-toggle" onclick="toggleMenu()" title="Buka Menu" aria-label="Buka Menu">&#9776;</button>
         </div>
 
         <div class="search-popover" id="searchPopover">

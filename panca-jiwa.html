@@ -234,28 +234,23 @@
 
         @media (max-width: 900px) {
             header {
-                position: sticky;
-                display: grid;
-                grid-template-columns: 40px 1fr auto;
+                display: flex;
+                justify-content: space-between;
                 align-items: center;
-                gap: 8px;
             }
 
             .menu-toggle {
                 display: flex;
-                grid-column: 1;
-                justify-self: start;
+                order: 1;
             }
 
             .brand {
-                grid-column: 2;
-                justify-self: center;
-                margin: 0;
+                order: 2;
+                margin: 0 auto;
             }
 
             .header-actions {
-                grid-column: 3;
-                justify-self: end;
+                order: 3;
             }
 
             .search-popover {
@@ -287,6 +282,8 @@
 <body>
 
     <header id="main-header">
+        <button class="menu-toggle" onclick="toggleMenu()" title="Buka Menu" aria-label="Buka Menu">&#9776;</button>
+
         <a href="index.html" class="brand" title="Pondok Modern IIBS El-'Azam">
             <div class="brand-logo-wrap">
                 <div class="brand-logo-circle">
@@ -339,7 +336,6 @@
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
             </button>
-            <button class="menu-toggle" onclick="toggleMenu()" title="Buka Menu" aria-label="Buka Menu">&#9776;</button>
         </div>
 
         <div class="search-popover" id="searchPopover">

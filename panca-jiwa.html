@@ -233,7 +233,34 @@
         }
 
         @media (max-width: 900px) {
-            .menu-toggle { display: flex; }
+            header {
+                position: sticky;
+                justify-content: center;
+            }
+
+            .brand {
+                margin: 0 auto;
+            }
+
+            .menu-toggle {
+                display: flex;
+                position: absolute;
+                left: 6%;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .header-actions {
+                position: absolute;
+                right: 6%;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .search-popover {
+                right: 6%;
+            }
+
             nav {
                 display: none; position: absolute; top: 100%; left: 0; right: 0;
                 background: var(--sky-deep); border-bottom: 2px solid var(--gold-accent);

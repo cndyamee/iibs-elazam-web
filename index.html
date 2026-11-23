@@ -26,7 +26,6 @@
         body { background-color: var(--white); color: var(--ink-dark); font-size: 13.5px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
         h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.01em; }
 
-        /* Header Utama Biru Falsafah Pondok */
         header {
             background: var(--sky-deep);
             padding: 6px 6%;
@@ -47,7 +46,6 @@
             box-shadow: 0 6px 20px rgba(30, 90, 130, 0.25);
         }
 
-        /* Brand Logo & Transisi Teks saat Scroll */
         .brand {
             display: flex;
             align-items: center;
@@ -127,7 +125,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Navigasi */
         nav ul { list-style: none; display: flex; align-items: center; gap: 28px; }
         nav ul li { position: relative; }
         nav ul li > a {
@@ -157,7 +154,6 @@
         }
         .icon-search:hover { background: rgba(255, 255, 255, 0.15); }
 
-        /* Kotak Search Melayang */
         .search-popover {
             display: none;
             position: absolute;
@@ -229,7 +225,6 @@
         }
         .menu-toggle:hover { background: rgba(255, 255, 255, 0.15); }
 
-        /* Hero Gambar Ikonik Pondok Bernuansa Biru */
         .hero-iconic {
             position: relative;
             width: 100%;
@@ -297,7 +292,6 @@
             max-width: 600px;
         }
 
-        /* Pernyataan Visi & Pembentukan Santri */
         .vision-statement {
             max-width: 960px;
             margin: 56px auto 24px;
@@ -326,7 +320,6 @@
             line-height: 1.75;
         }
 
-        /* Falsafah Pondok */
         .falsafah-section { max-width: 1180px; margin: 54px auto 48px; padding: 0 4%; }
         .tab-header-line {
             border-bottom: 1.5px solid var(--sky-deep);
@@ -361,7 +354,6 @@
         }
         .btn-editorial:hover { border-color: var(--sky-deep); color: var(--sky-deep); box-shadow: 0 4px 12px rgba(30, 90, 130, 0.12); }
 
-        /* Kanal Informasi Harian */
         .channel-strip-wrap { max-width: 1180px; margin: 48px auto 64px; padding: 0 4%; }
         .channel-strip {
             background-color: var(--sky-tint); border: 1px solid #D6E9F5; border-left: 3px solid var(--sky-deep);
@@ -378,7 +370,6 @@
         .link-minimal.solid { background: var(--sky-deep); color: var(--white); }
         .link-minimal.solid:hover { background: #164463; }
 
-        /* Footer Disamakan Biru Falsafah Pondok */
         footer {
             background: var(--sky-deep);
             color: rgba(255, 255, 255, 0.88); padding: 44px 6% 22px; border-top: 2px solid var(--gold-accent);
@@ -394,7 +385,33 @@
         .footer-bottom { max-width: 1180px; margin: 18px auto 0; display: flex; justify-content: space-between; font-size: 11.5px; color: rgba(255, 255, 255, 0.72); }
 
         @media (max-width: 900px) {
-            .menu-toggle { display: flex; }
+            header {
+                position: sticky;
+                justify-content: center;
+            }
+
+            .brand {
+                margin: 0 auto;
+            }
+
+            .menu-toggle {
+                display: flex;
+                position: absolute;
+                left: 6%;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .header-actions {
+                position: absolute;
+                right: 6%;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .search-popover {
+                right: 6%;
+            }
 
             nav {
                 display: none;
@@ -521,7 +538,6 @@
         </div>
     </header>
 
-    <!-- 1. Gambar Paling Ikonik Pondok -->
     <section class="hero-iconic">
         <img src="images/hero-pondok.jpg" alt="Pondok Modern IIBS El-'Azam Kuningan">
         <div class="hero-overlay">
@@ -533,7 +549,6 @@
         </div>
     </section>
 
-    <!-- 2. Pernyataan Pembentukan Santri -->
     <section class="vision-statement">
         <h2>Mewujudkan Santri Bermartabat &amp; Berakhlak Mulia</h2>
         <div class="vision-lines">
@@ -543,7 +558,6 @@
         </div>
     </section>
 
-    <!-- 3. Falsafah Pondok -->
     <section class="falsafah-section">
         <div class="tab-header-line">
             <span>Falsafah Pondok</span>
@@ -576,7 +590,6 @@
         </div>
     </section>
 
-    <!-- 4. Kanal Informasi Harian -->
     <section class="channel-strip-wrap">
         <div class="channel-strip">
             <div class="channel-text">

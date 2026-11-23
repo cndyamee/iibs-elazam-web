@@ -157,6 +157,63 @@
         }
         .icon-search:hover { background: rgba(255, 255, 255, 0.15); }
 
+        /* Kotak Search Melayang */
+        .search-popover {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 6%;
+            background: var(--white);
+            padding: 12px;
+            border: 1px solid var(--line);
+            border-top: 2px solid var(--sky-deep);
+            box-shadow: 0 12px 28px rgba(16, 24, 40, 0.14);
+            z-index: 1100;
+            width: min(340px, 88vw);
+        }
+
+        .search-popover.open {
+            display: block;
+        }
+
+        .search-form {
+            display: flex;
+            align-items: stretch;
+        }
+
+        .search-form input {
+            flex: 1;
+            min-width: 0;
+            padding: 9px 12px;
+            border: 1px solid #D0D5DD;
+            border-right: none;
+            background: #F4F7F6;
+            color: var(--ink-dark);
+            font-size: 12.5px;
+            outline: none;
+        }
+
+        .search-form input:focus {
+            background: var(--white);
+            border-color: var(--sky-deep);
+        }
+
+        .search-form button {
+            padding: 0 16px;
+            background: var(--sky-deep);
+            color: var(--white);
+            border: 1px solid var(--sky-deep);
+            font-size: 12.5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+
+        .search-form button:hover {
+            background: #164463;
+        }
+
         .menu-toggle {
             display: none;
             background: transparent;
@@ -447,13 +504,20 @@
         </nav>
 
         <div class="header-actions">
-            <button class="icon-search" onclick="cariInfo()" title="Cari Informasi">
+            <button class="icon-search" id="searchToggleBtn" onclick="toggleSearch(event)" title="Cari Informasi" aria-label="Cari Informasi">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
             </button>
             <button class="menu-toggle" onclick="toggleMenu()" title="Buka Menu" aria-label="Buka Menu">&#9776;</button>
+        </div>
+
+        <div class="search-popover" id="searchPopover">
+            <form class="search-form" onsubmit="submitSearch(event)">
+                <input type="text" id="searchInput" placeholder="Cari informasi..." autocomplete="off">
+                <button type="submit">Search</button>
+            </form>
         </div>
     </header>
 
@@ -575,17 +639,31 @@
             }
         }
 
-        window.addEventListener("scroll", function() {
-            const header = document.getElementById("main-header");
-            if (window.scrollY > 50) {
-                header.classList.add("scrolled");
-            } else {
-                header.classList.remove("scrolled");
+        function toggleSearch(event) {
+            event.stopPropagation();
+            const popover = document.getElementById("searchPopover");
+            const input = document.getElementById("searchInput");
+            if (!popover) return;
+            popover.classList.toggle("open");
+            if (popover.classList.contains("open") && input) {
+                setTimeout(() => input.focus(), 50);
+            }
+        }
+
+        document.addEventListener("click", function(event) {
+            const popover = document.getElementById("searchPopover");
+            const btn = document.getElementById("searchToggleBtn");
+            if (popover && popover.classList.contains("open")) {
+                if (!popover.contains(event.target) && (!btn || !btn.contains(event.target))) {
+                    popover.classList.remove("open");
+                }
             }
         });
 
-        function cariInfo() {
-            const kata = prompt("Cari informasi (contoh: panca jiwa, motto, biaya, syarat, jadwal):");
+        function submitSearch(event) {
+            event.preventDefault();
+            const input = document.getElementById("searchInput");
+            const kata = input ? input.value.trim() : "";
             if (!kata) return;
             const k = kata.toLowerCase();
             if (k.includes("panca")) {
@@ -596,10 +674,21 @@
                 window.location.href = "pendaftaran.html";
             } else if (k.includes("jadwal") || k.includes("kurikulum") || k.includes("ekskul")) {
                 window.location.href = "pendidikan.html";
+            } else if (k.includes("kontak") || k.includes("alamat")) {
+                window.location.href = "kontak.html";
             } else {
                 window.location.href = "galeri.html";
             }
         }
+
+        window.addEventListener("scroll", function() {
+            const header = document.getElementById("main-header");
+            if (window.scrollY > 50) {
+                header.classList.add("scrolled");
+            } else {
+                header.classList.remove("scrolled");
+            }
+        });
     </script>
 
 </body>

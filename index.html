@@ -135,12 +135,23 @@
 
         .dropdown-menu {
             display: none; position: absolute; top: 100%; left: 0; background: var(--white);
-            min-width: 215px; border: 1px solid var(--line); border-top: 2px solid var(--sky-deep);
+            min-width: 225px; border: 1px solid var(--line); border-top: 2px solid var(--sky-deep);
             box-shadow: 0 12px 28px rgba(16, 24, 40, 0.08); padding: 6px 0; z-index: 999;
         }
-        nav ul li:hover .dropdown-menu { display: block; }
-        .dropdown-menu a { display: block; padding: 8px 16px; color: var(--ink-body); text-decoration: none; font-size: 12px; transition: 0.15s; }
-        .dropdown-menu a:hover { background: var(--sky-tint); color: var(--sky-deep); }
+        nav ul li:hover > .dropdown-menu { display: block; }
+        .dropdown-menu a {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 9px 16px; color: var(--ink-body); text-decoration: none; font-size: 12px; transition: 0.15s;
+        }
+        .dropdown-menu a:hover { background: var(--sky-tint); color: var(--sky-deep); font-weight: 500; }
+
+        .has-submenu { position: relative; }
+        .submenu {
+            display: none; position: absolute; top: -2px; left: 100%; background: var(--white);
+            min-width: 195px; border: 1px solid var(--line); border-top: 2px solid var(--gold-accent);
+            box-shadow: 0 12px 28px rgba(16, 24, 40, 0.1); padding: 6px 0; z-index: 1000;
+        }
+        .has-submenu:hover > .submenu { display: block; }
 
         .header-actions {
             display: flex;
@@ -228,7 +239,7 @@
         .hero-iconic {
             position: relative;
             width: 100%;
-            height: 440px;
+            height: 540px;
             overflow: hidden;
             background: var(--sky-deep);
         }
@@ -237,8 +248,8 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center 25%;
             display: block;
-            filter: saturate(0.75) contrast(1.04) brightness(0.92);
         }
 
         .hero-iconic::after {
@@ -247,9 +258,8 @@
             inset: 0;
             background: linear-gradient(
                 180deg,
-                rgba(30, 90, 130, 0.42) 0%,
-                rgba(30, 90, 130, 0.58) 55%,
-                rgba(15, 42, 68, 0.88) 100%
+                rgba(0, 0, 0, 0.52) 0%,
+                rgba(0, 0, 0, 0) 55%
             );
             pointer-events: none;
             z-index: 1;
@@ -260,8 +270,8 @@
             inset: 0;
             z-index: 2;
             display: flex;
-            align-items: flex-end;
-            padding: 40px 6%;
+            align-items: flex-start;
+            padding: 36px 6%;
         }
 
         .hero-content {
@@ -432,7 +442,7 @@
 
             nav ul li { width: 100%; }
 
-            nav ul li:hover .dropdown-menu { display: none; }
+            nav ul li:hover > .dropdown-menu { display: none; }
 
             .dropdown-menu {
                 position: static;
@@ -445,7 +455,7 @@
                 margin-top: 4px;
             }
 
-            nav ul li.dropdown.open .dropdown-menu {
+            nav ul li.dropdown.open > .dropdown-menu {
                 display: block;
             }
 
@@ -459,7 +469,21 @@
                 color: #FDE68A;
             }
 
-            .hero-iconic { height: 340px; }
+            .has-submenu:hover > .submenu { display: none; }
+            .submenu {
+                position: static;
+                display: none;
+                background: rgba(255, 255, 255, 0.05);
+                border: none;
+                border-left: 2px solid var(--gold-accent);
+                box-shadow: none;
+                padding: 2px 0 2px 14px;
+                margin: 2px 0 6px;
+            }
+            .has-submenu.open > .submenu { display: block; }
+
+            .hero-iconic { height: 380px; }
+            .hero-overlay { padding: 24px 6%; }
             .hero-content h1 { font-size: 28px; }
             .vision-statement h2 { font-size: 27px; }
             .falsafah-grid { grid-template-columns: 1fr; }
@@ -492,17 +516,23 @@
                 <li class="dropdown">
                     <a href="profil.html" onclick="toggleDropdown(event, this)">Tentang Pondok &#9662;</a>
                     <div class="dropdown-menu">
-                        <a href="profil.html#muqoddimah">Muqoddimah &amp; Sejarah</a>
-                        <a href="panca-jiwa.html">Panca Jiwa Pondok</a>
-                        <a href="motto.html">Motto Pondok</a>
+                        <a href="profil.html#muqoddimah">Muqoddimah</a>
+                        <a href="profil.html#pimpinan">Profil Pimpinan</a>
+                        <div class="has-submenu">
+                            <a href="profil.html#falsafah" onclick="toggleSubmenu(event, this)">Falsafah &rsaquo;</a>
+                            <div class="submenu">
+                                <a href="panca-jiwa.html">Panca Jiwa</a>
+                                <a href="motto.html">Motto</a>
+                            </div>
+                        </div>
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="pendidikan.html" onclick="toggleDropdown(event, this)">Pendidikan &#9662;</a>
+                    <a href="kurikulum.html" onclick="toggleDropdown(event, this)">Pendidikan &#9662;</a>
                     <div class="dropdown-menu">
-                        <a href="pendidikan.html#kurikulum">Kurikulum Pondok &amp; Sekolah</a>
-                        <a href="pendidikan.html#ekskul">Ekstrakurikuler</a>
-                        <a href="pendidikan.html#jadwal">Jadwal Harian &amp; Mingguan</a>
+                        <a href="kurikulum.html#kurikulum">Kurikulum Pondok &amp; Sekolah</a>
+                        <a href="kurikulum.html#ekskul">Ekstrakurikuler</a>
+                        <a href="kurikulum.html#jadwal">Jadwal Harian &amp; Mingguan</a>
                     </div>
                 </li>
                 <li><a href="galeri.html">Warta &amp; Arsip</a></li>
@@ -536,7 +566,7 @@
     </header>
 
     <section class="hero-iconic">
-        <img src="images/hero-pondok.jpg" alt="Pondok Modern IIBS El-'Azam Kuningan">
+        <img src="images/kubahpondok.jpg" alt="Pondok Modern IIBS El-'Azam Kuningan">
         <div class="hero-overlay">
             <div class="hero-content">
                 <span class="hero-kicker">Pasawahan, Kabupaten Kuningan &bull; Sejak 2007</span>
@@ -615,7 +645,7 @@
                 <ul>
                     <li><a href="panca-jiwa.html">Panca Jiwa Pondok</a></li>
                     <li><a href="motto.html">Motto Pondok</a></li>
-                    <li><a href="pendidikan.html">Kurikulum &amp; Jadwal Harian</a></li>
+                    <li><a href="kurikulum.html">Kurikulum &amp; Jadwal Harian</a></li>
                     <li><a href="pendaftaran.html">Pendaftaran Santri Baru (PSB)</a></li>
                 </ul>
             </div>
@@ -646,6 +676,14 @@
                 event.preventDefault();
                 const parentLi = linkEl.parentElement;
                 parentLi.classList.toggle("open");
+            }
+        }
+
+        function toggleSubmenu(event, linkEl) {
+            if (window.innerWidth <= 900) {
+                event.preventDefault();
+                event.stopPropagation();
+                linkEl.parentElement.classList.toggle("open");
             }
         }
 
@@ -683,7 +721,7 @@
             } else if (k.includes("biaya") || k.includes("syarat") || k.includes("daftar")) {
                 window.location.href = "pendaftaran.html";
             } else if (k.includes("jadwal") || k.includes("kurikulum") || k.includes("ekskul")) {
-                window.location.href = "pendidikan.html";
+                window.location.href = "kurikulum.html";
             } else if (k.includes("kontak") || k.includes("alamat")) {
                 window.location.href = "kontak.html";
             } else {

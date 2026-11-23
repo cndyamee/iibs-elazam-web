@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurikulum Pondok & Sekolah | Pondok Modern IIBS El-'Azam</title>
+    <meta name="description" content="Kurikulum Pondok dan Kurikulum Sekolah Pondok Modern IIBS El-'Azam Kuningan.">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --sky-deep: #1E5A82;
+            --sky-tint: #F4F9FC;
+            --gold-accent: #C5A059;
+            --ink-dark: #182230;
+            --ink-body: #475467;
+            --ink-muted: #667085;
+            --line: #E4E7EC;
+            --white: #FFFFFF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--white); color: var(--ink-dark); font-size: 13.5px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.01em; }
+
+        header {
+            background: var(--sky-deep); padding: 6px 6%; min-height: 64px; position: sticky; top: 0; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--gold-accent);
+            transition: padding 0.3s ease, box-shadow 0.3s ease;
+        }
+        header.scrolled { padding: 6px 6%; min-height: 58px; box-shadow: 0 6px 20px rgba(30, 90, 130, 0.25); }
+
+        .brand { display: flex; align-items: center; text-decoration: none; border-bottom: none; min-height: 44px; position: relative; }
+        .brand-logo-wrap { display: flex; align-items: center; transition: opacity 0.3s ease, transform 0.3s ease; }
+        .brand-logo-circle { height: 52px; min-width: 52px; padding: 0; border-radius: 4px; background: transparent; border: none; display: flex; align-items: center; justify-content: center; }
+        .brand-logo-circle img { max-height: 52px; width: auto; max-width: 160px; object-fit: contain; display: block; }
+        .brand-wordmark { display: none; flex-direction: column; animation: fadeSlideIn 0.35s ease forwards; }
+        .brand-wordmark small { font-size: 9.5px; letter-spacing: 1.8px; text-transform: uppercase; color: #FDE68A; font-weight: 600; line-height: 1.2; }
+        .brand-wordmark strong { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 700; color: var(--white); letter-spacing: 0.8px; line-height: 1.1; }
+        .brand, .brand:visited, .brand:hover, .brand-wordmark, .brand-wordmark small, .brand-wordmark strong { text-decoration: none !important; border-bottom: none !important; }
+        header.scrolled .brand-logo-wrap { display: none; }
+        header.scrolled .brand-wordmark { display: flex; }
+
+        @keyframes fadeSlideIn {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        nav ul { list-style: none; display: flex; align-items: center; gap: 28px; }
+        nav ul li { position: relative; }
+        nav ul li > a {
+            color: rgba(255, 255, 255, 0.94); text-decoration: none; font-size: 12.5px; font-weight: 500;
+            letter-spacing: 0.3px; padding: 8px 0; display: inline-block; border-bottom: 1.5px solid transparent; transition: 0.2s;
+        }
+        nav ul li > a:hover, nav ul li > a.active { color: var(--white); border-bottom-color: #FDE68A; }
+
+        .dropdown-menu {
+            display: none; position: absolute; top: 100%; left: 0; background: var(--white);
+            min-width: 235px; border: 1px solid var(--line); border-top: 2px solid var(--sky-deep);
+            box-shadow: 0 12px 28px rgba(16, 24, 40, 0.08); padding: 6px 0; z-index: 999;
+        }
+        nav ul li:hover > .dropdown-menu { display: block; }
+        .dropdown-menu a {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 9px 16px; color: var(--ink-body); text-decoration: none; font-size: 12px; transition: 0.15s;
+        }
+        .dropdown-menu a:hover { background: var(--sky-tint); color: var(--sky-deep); font-weight: 500; }
+
+        .has-submenu { position: relative; }
+        .submenu {
+            display: none; position: absolute; top: -2px; left: 100%; background: var(--white);
+            min-width: 195px; border: 1px solid var(--line); border-top: 2px solid var(--gold-accent);
+            box-shadow: 0 12px 28px rgba(16, 24, 40, 0.1); padding: 6px 0; z-index: 1000;
+        }
+        .has-submenu:hover > .submenu { display: block; }
+
+        .header-actions { display: flex; align-items: center; gap: 8px; }
+        .icon-search {
+            background: transparent; border: 1px solid rgba(255, 255, 255, 0.35); color: var(--white);
+            width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;
+        }
+        .icon-search:hover { background: rgba(255, 255, 255, 0.15); }
+        .menu-toggle {
+            display: none; background: transparent; border: 1px solid rgba(255, 255, 255, 0.35); color: var(--white);
+            width: 32px; height: 32px; border-radius: 6px; align-items: center; justify-content: center; cursor: pointer; font-size: 16px;
+        }
+
+        .search-popover {
+            display: none; position: absolute; top: calc(100% + 8px); right: 6%; background: var(--white);
+            padding: 12px; border: 1px solid var(--line); border-top: 2px solid var(--sky-deep);
+            box-shadow: 0 12px 28px rgba(16, 24, 40, 0.14); z-index: 1100; width: min(340px, 88vw);
+        }
+        .search-popover.open { display: block; }
+        .search-form { display: flex; align-items: stretch; }
+        .search-form input {
+            flex: 1; min-width: 0; padding: 9px 12px; border: 1px solid #D0D5DD; border-right: none;
+            background: #F4F7F6; color: var(--ink-dark); font-size: 12.5px; outline: none;
+        }
+        .search-form button {
+            padding: 0 16px; background: var(--sky-deep); color: var(--white); border: 1px solid var(--sky-deep);
+            font-size: 12.5px; font-weight: 500; cursor: pointer; white-space: nowrap;
+        }
+
+        .page-header {
+            background: var(--sky-tint); border-bottom: 1px solid #D6E9F5; padding: 44px 6% 36px;
+        }
+        .page-header-inner { max-width: 960px; margin: 0 auto; }
+        .breadcrumb { font-size: 12px; color: var(--ink-muted); margin-bottom: 12px; }
+        .breadcrumb a { color: var(--sky-deep); text-decoration: none; font-weight: 500; }
+        .page-kicker {
+            display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 1.4px;
+            text-transform: uppercase; color: var(--sky-deep); margin-bottom: 8px;
+        }
+        .page-header h1 { font-size: 40px; color: var(--sky-deep); font-weight: 700; margin-bottom: 10px; line-height: 1.15; }
+        .page-header p { font-size: 14px; color: var(--ink-body); max-width: 740px; }
+
+        .doc-container { max-width: 960px; margin: 44px auto 76px; padding: 0 6%; }
+        .doc-block {
+            padding-bottom: 32px; margin-bottom: 32px; border-bottom: 1px solid var(--line);
+        }
+        .doc-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .doc-block h2 { font-size: 28px; color: var(--sky-deep); font-weight: 700; margin-bottom: 10px; }
+        .doc-block p { font-size: 13.5px; color: var(--ink-body); margin-bottom: 12px; }
+        .doc-block ul { padding-left: 20px; color: var(--ink-body); }
+        .doc-block li { font-size: 13px; margin-bottom: 7px; }
+
+        footer {
+            background: var(--sky-deep); color: rgba(255, 255, 255, 0.88);
+            padding: 44px 6% 22px; border-top: 2px solid var(--gold-accent);
+        }
+        .footer-inner {
+            max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+            gap: 36px; padding-bottom: 28px; border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+        }
+        .footer-inner h4 { font-family: 'Cormorant Garamond', serif; font-size: 17px; color: #FDE68A; margin-bottom: 12px; }
+        .footer-inner p, .footer-inner li { font-size: 12.5px; line-height: 1.7; list-style: none; margin-bottom: 6px; }
+        .footer-inner a { color: rgba(255, 255, 255, 0.88); text-decoration: none; }
+        .footer-inner a:hover { color: #FDE68A; }
+        .footer-bottom {
+            max-width: 1180px; margin: 18px auto 0; display: flex; justify-content: space-between;
+            font-size: 11.5px; color: rgba(255, 255, 255, 0.72);
+        }
+
+        @media (max-width: 900px) {
+            header { display: flex; justify-content: space-between; align-items: center; }
+            .menu-toggle { display: flex; order: 1; }
+            .brand { order: 2; margin: 0 auto; }
+            .header-actions { order: 3; }
+            .search-popover { right: 6%; }
+            nav {
+                display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--sky-deep);
+                border-bottom: 2px solid var(--gold-accent); padding: 12px 6% 18px;
+            }
+            nav.open { display: block; }
+            nav ul { flex-direction: column; align-items: flex-start; gap: 8px; }
+            nav ul li { width: 100%; }
+            nav ul li:hover > .dropdown-menu { display: none; }
+            .dropdown-menu {
+                position: static; display: none; background: rgba(255, 255, 255, 0.06);
+                border: none; border-left: 2px solid #FDE68A; box-shadow: none; padding: 4px 0 4px 12px; margin-top: 4px;
+            }
+            nav ul li.dropdown.open > .dropdown-menu { display: block; }
+            .dropdown-menu a { color: rgba(255, 255, 255, 0.9); padding: 6px 8px; }
+            .has-submenu:hover > .submenu { display: none; }
+            .submenu {
+                position: static; display: none; background: rgba(255, 255, 255, 0.05);
+                border: none; border-left: 2px solid var(--gold-accent); box-shadow: none; padding: 2px 0 2px 14px; margin: 2px 0 6px;
+            }
+            .has-submenu.open > .submenu { display: block; }
+            .page-header h1 { font-size: 30px; }
+            .footer-inner { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 6px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="main-header">
+        <button class="menu-toggle" onclick="toggleMenu()" title="Buka Menu" aria-label="Buka Menu">&#9776;</button>
+
+        <a href="index.html" class="brand" title="Pondok Modern IIBS El-'Azam">
+            <div class="brand-logo-wrap">
+                <div class="brand-logo-circle">
+                    <img src="images/Logo PONDOK.png" alt="Logo Pondok Modern IIBS El-'Azam">
+                </div>
+            </div>
+            <div class="brand-wordmark">
+                <small>Integrated Islamic Boarding School</small>
+                <strong>IIBS EL-'AZAM</strong>
+            </div>
+        </a>
+
+        <nav id="main-nav">
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li class="dropdown">
+                    <a href="profil.html" onclick="toggleDropdown(event, this)">Tentang Pondok &#9662;</a>
+                    <div class="dropdown-menu">
+                        <a href="profil.html#muqoddimah">Muqoddimah</a>
+                        <a href="profil.html#pimpinan">Profil Pimpinan</a>
+                        <div class="has-submenu">
+                            <a href="profil.html#falsafah" onclick="toggleSubmenu(event, this)">Falsafah &rsaquo;</a>
+                            <div class="submenu">
+                                <a href="panca-jiwa.html">Panca Jiwa</a>
+                                <a href="motto.html">Motto</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="kurikulum.html" class="active" onclick="toggleDropdown(event, this)">Pendidikan &#9662;</a>
+                    <div class="dropdown-menu">
+                        <a href="kurikulum.html">Kurikulum Pondok &amp; Sekolah</a>
+                        <a href="ekstrakurikuler.html">Ekstrakurikuler</a>
+                        <a href="jadwal.html">Jadwal Harian &amp; Mingguan</a>
+                    </div>
+                </li>
+                <li><a href="galeri.html">Warta &amp; Arsip</a></li>
+                <li class="dropdown">
+                    <a href="pendaftaran.html" onclick="toggleDropdown(event, this)">Pendaftaran &#9662;</a>
+                    <div class="dropdown-menu">
+                        <a href="pendaftaran.html#syarat">Syarat &amp; Jadwal PSB 2027</a>
+                        <a href="pendaftaran.html#biaya">Pembiayaan Pendidikan</a>
+                        <a href="pendaftaran.html#perlengkapan">Perlengkapan Santri</a>
+                    </div>
+                </li>
+                <li><a href="kontak.html">Kontak &amp; Alamat</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-actions">
+            <button class="icon-search" id="searchToggleBtn" onclick="toggleSearch(event)" title="Cari Informasi" aria-label="Cari Informasi">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </button>
+        </div>
+
+        <div class="search-popover" id="searchPopover">
+            <form class="search-form" onsubmit="submitSearch(event)">
+                <input type="text" id="searchInput" placeholder="Cari informasi..." autocomplete="off">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="page-header-inner">
+            <div class="breadcrumb">
+                <a href="index.html">Beranda</a> &rsaquo; Pendidikan &rsaquo; Kurikulum Pondok &amp; Sekolah
+            </div>
+            <span class="page-kicker">Pendidikan Terpadu</span>
+            <h1>Kurikulum Pondok &amp; Sekolah</h1>
+            <p>Perpaduan pembinaan kepesantrenan berasrama dan pendidikan formal yang saling menguatkan dalam keseharian santri.</p>
+        </div>
+    </section>
+
+    <main class="doc-container">
+        <section id="kurikulum-pondok" class="doc-block">
+            <h2>Kurikulum Pondok</h2>
+            <p>Mengacu pada Kurikulum Pondok Modern Gontor untuk membina kehidupan berasrama, penguasaan bahasa, ibadah, kepemimpinan, dan akhlak.</p>
+            <ul>
+                <li>Pembiasaan shalat berjamaah, tahsin/tahfidz, serta kajian keislaman</li>
+                <li>Lingkungan dwibahasa aktif (Bahasa Arab &amp; Bahasa Inggris)</li>
+                <li>Pembinaan kemandirian, disiplin asrama, dan organisasi santri</li>
+            </ul>
+        </section>
+
+        <section id="kurikulum-sekolah" class="doc-block">
+            <h2>Kurikulum Sekolah</h2>
+            <p>Pendidikan formal tingkat SMP/MTs dan SMA/MA sederajat yang mendukung prestasi akademik serta pengembangan potensi santri.</p>
+            <ul>
+                <li>Mata pelajaran umum &amp; sains terintegrasi nilai-nilai Islam</li>
+                <li>Penguatan literasi, numerasi, dan persiapan jenjang lanjutan</li>
+                <li>Bimbingan belajar terarah di lingkungan sekolah dan asrama</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <div>
+                <h4>Pondok Modern IIBS El-'Azam</h4>
+                <p>"Mendidik dengan Iman, Ilmu, dan Amal." Lembaga pendidikan Islam berbasis sistem pesantren modern di kawasan sejuk kaki Gunung Ciremai, Kuningan.</p>
+            </div>
+            <div>
+                <h4>Tautan Halaman</h4>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="profil.html">Muqoddimah</a></li>
+                    <li><a href="kurikulum.html">Kurikulum Pondok &amp; Sekolah</a></li>
+                    <li><a href="ekstrakurikuler.html">Ekstrakurikuler</a></li>
+                    <li><a href="jadwal.html">Jadwal Harian &amp; Mingguan</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Sekretariat Pondok</h4>
+                <ul>
+                    <li>Blok Reuma Dusun Karang Anyar, Ds. Ciwiru, Kec. Pasawahan, Kab. Kuningan 45559</li>
+                    <li>Telepon / WA: <a href="https://wa.me/62895401985294" target="_blank">0895401985294</a></li>
+                    <li>Email: pondokmoderniibselazam@gmail.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Pondok Modern IIBS El-'Azam &mdash; Integrated Islamic Boarding School</span>
+            <span>Pasawahan, Kuningan, Jawa Barat</span>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById("main-nav");
+            if (nav) nav.classList.toggle("open");
+        }
+        function toggleDropdown(event, linkEl) {
+            if (window.innerWidth <= 900) {
+                event.preventDefault();
+                linkEl.parentElement.classList.toggle("open");
+            }
+        }
+        function toggleSubmenu(event, linkEl) {
+            if (window.innerWidth <= 900) {
+                event.preventDefault();
+                event.stopPropagation();
+                linkEl.parentElement.classList.toggle("open");
+            }
+        }
+        function toggleSearch(event) {
+            event.stopPropagation();
+            const popover = document.getElementById("searchPopover");
+            const input = document.getElementById("searchInput");
+            if (!popover) return;
+            popover.classList.toggle("open");
+            if (popover.classList.contains("open") && input) setTimeout(() => input.focus(), 50);
+        }
+        document.addEventListener("click", function(event) {
+            const popover = document.getElementById("searchPopover");
+            const btn = document.getElementById("searchToggleBtn");
+            if (popover && popover.classList.contains("open")) {
+                if (!popover.contains(event.target) && (!btn || !btn.contains(event.target))) popover.classList.remove("open");
+            }
+        });
+        function submitSearch(event) {
+            event.preventDefault();
+            const input = document.getElementById("searchInput");
+            const kata = input ? input.value.trim().toLowerCase() : "";
+            if (!kata) return;
+            if (kata.includes("panca")) window.location.href = "panca-jiwa.html";
+            else if (kata.includes("motto")) window.location.href = "motto.html";
+            else if (kata.includes("muqoddimah") || kata.includes("tentang")) window.location.href = "profil.html";
+            else if (kata.includes("ekskul") || kata.includes("ekstrakurikuler")) window.location.href = "ekstrakurikuler.html";
+            else if (kata.includes("jadwal")) window.location.href = "jadwal.html";
+            else if (kata.includes("kurikulum") || kata.includes("pondok") || kata.includes("sekolah")) window.location.href = "kurikulum.html";
+            else if (kata.includes("biaya") || kata.includes("syarat") || kata.includes("daftar")) window.location.href = "pendaftaran.html";
+            else if (kata.includes("kontak") || kata.includes("alamat")) window.location.href = "kontak.html";
+            else window.location.href = "galeri.html";
+        }
+        window.addEventListener("scroll", function() {
+            const header = document.getElementById("main-header");
+            if (!header) return;
+            if (window.scrollY > 50) header.classList.add("scrolled");
+            else header.classList.remove("scrolled");
+        });
+    </script>
+</body>
+</html>

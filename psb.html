@@ -11,8 +11,6 @@
             --sky-deep: #1E5A82;
             --sky-tint: #F4F9FC;
             --gold-accent: #C5A059;
-            --gold-btn: #EAB308;
-            --gold-btn-hover: #CA8A04;
             --ink-dark: #182230;
             --ink-body: #475467;
             --ink-muted: #667085;
@@ -80,29 +78,6 @@
             display: flex;
             align-items: center;
             gap: 10px;
-        }
-        .header-actions a.btn-daftar-nav,
-        .header-actions a.btn-daftar-nav:link,
-        .header-actions a.btn-daftar-nav:visited,
-        .header-actions a.btn-daftar-nav:hover,
-        .header-actions a.btn-daftar-nav:active {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 7px 16px;
-            background-color: var(--gold-btn);
-            color: var(--ink-dark);
-            text-decoration: none;
-            font-size: 12px;
-            font-weight: 600;
-            border-radius: 999px;
-            white-space: nowrap;
-            line-height: 1.2;
-            transition: background-color 0.2s ease, transform 0.2s ease;
-        }
-        .header-actions a.btn-daftar-nav:hover {
-            background-color: var(--gold-btn-hover);
-            color: var(--ink-dark);
         }
 
         .icon-search {
@@ -218,7 +193,6 @@
             .menu-toggle { display: flex; order: 1; }
             .brand { order: 2; margin: 0 auto; }
             .header-actions { order: 3; }
-            .header-actions a.btn-daftar-nav { padding: 6px 12px; font-size: 11.5px; }
             .search-popover { right: 6%; }
             nav {
                 display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--sky-deep);
@@ -302,12 +276,6 @@
         </nav>
 
         <div class="header-actions">
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLScqXFZ52vTLcIygKnMtI5K5_jBDjHdJ_qKKoQYLFE7EmR-4Og/viewform"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-daftar-nav"
-            >Daftar Sekarang</a>
             <button class="icon-search" id="searchToggleBtn" onclick="toggleSearch(event)" title="Cari Informasi" aria-label="Cari Informasi">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="11" cy="11" r="8"></circle>

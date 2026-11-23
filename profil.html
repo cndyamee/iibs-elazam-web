@@ -180,12 +180,22 @@
         .page-hero {
             background: var(--sky-tint);
             border-bottom: 1px solid #D6E9F5;
-            padding: 40px 6% 32px;
+            padding: 44px 6% 36px;
         }
         .page-hero-inner { max-width: 920px; margin: 0 auto; }
-        .breadcrumb { font-size: 12px; color: var(--ink-muted); margin-bottom: 10px; }
+        .breadcrumb { font-size: 12px; color: var(--ink-muted); margin-bottom: 12px; }
         .breadcrumb a { color: var(--sky-deep); text-decoration: none; font-weight: 500; }
-        .page-hero h1 { font-size: 38px; color: var(--sky-deep); font-weight: 700; line-height: 1.15; }
+        .page-kicker {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            color: var(--sky-deep);
+            margin-bottom: 8px;
+        }
+        .page-hero h1 { font-size: 40px; color: var(--sky-deep); font-weight: 700; margin-bottom: 10px; line-height: 1.15; }
+        .page-hero p { font-size: 14px; color: var(--ink-body); max-width: 720px; }
 
         .page-wrap { max-width: 920px; margin: 40px auto 72px; padding: 0 6%; }
 
@@ -347,13 +357,7 @@
             </ul>
         </nav>
 
-       <div class="header-actions">
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLScqXFZ52vTLcIygKnMtI5K5_jBDjHdJ_qKKoQYLFE7EmR-4Og/viewform"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-daftar-nav"
-            >Daftar Sekarang</a>
+        <div class="header-actions">
             <button class="icon-search" id="searchToggleBtn" onclick="toggleSearch(event)" title="Cari Informasi" aria-label="Cari Informasi">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="11" cy="11" r="8"></circle>
@@ -373,9 +377,11 @@
     <section class="page-hero">
         <div class="page-hero-inner">
             <div class="breadcrumb">
-                <a href="index.html">Beranda</a> &rsaquo; Tentang Pondok
+                <a href="index.html">Beranda</a> &rsaquo; Tentang Pondok &rsaquo; Muqoddimah
             </div>
+            <span class="page-kicker">Profil &amp; Sejarah Pondok</span>
             <h1>Tentang Kami</h1>
+            <p>Mengenal lebih dekat latar belakang berdirinya, lingkungan belajar, serta sistem pengasuhan Pondok Modern IIBS El-'Azam.</p>
         </div>
     </section>
 

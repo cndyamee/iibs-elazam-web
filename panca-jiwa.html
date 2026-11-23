@@ -235,26 +235,27 @@
         @media (max-width: 900px) {
             header {
                 position: sticky;
-                justify-content: center;
-            }
-
-            .brand {
-                margin: 0 auto;
+                display: grid;
+                grid-template-columns: 40px 1fr auto;
+                align-items: center;
+                gap: 8px;
             }
 
             .menu-toggle {
                 display: flex;
-                position: absolute;
-                left: 6%;
-                top: 50%;
-                transform: translateY(-50%);
+                grid-column: 1;
+                justify-self: start;
+            }
+
+            .brand {
+                grid-column: 2;
+                justify-self: center;
+                margin: 0;
             }
 
             .header-actions {
-                position: absolute;
-                right: 6%;
-                top: 50%;
-                transform: translateY(-50%);
+                grid-column: 3;
+                justify-self: end;
             }
 
             .search-popover {

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -465,7 +465,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center top;
+            object-position: 26% top;
             display: block;
         }
 
@@ -572,7 +572,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center 35%;
+            object-position: center 52%;
             display: block;
         }
 
@@ -580,7 +580,7 @@
             content: "";
             position: absolute;
             inset: 0;
-            background: linear-gradient(90deg, rgba(16, 36, 56, 0.86) 0%, rgba(16, 36, 56, 0.56) 65%, rgba(16, 36, 56, 0.38) 100%);
+            background: linear-gradient(90deg, rgba(16, 36, 56, 0.82) 0%, rgba(16, 36, 56, 0.44) 60%, rgba(16, 36, 56, 0.22) 100%);
             z-index: 1;
         }
 
@@ -841,19 +841,12 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center 20%;
             display: block;
         }
 
-        .galeri-badge {
-            font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: var(--ink-muted);
-            background: var(--white);
-            border: 1px solid #D6E9F5;
-            padding: 3px 9px;
-            border-radius: 999px;
+        .galeri-slide[data-slot="3"] .galeri-photo-slot img {
+            object-position: center 15%;
         }
 
         .galeri-dots {
@@ -1031,17 +1024,24 @@
                 margin: 0 auto;
                 width: 100%;
             }
+            .pengasuh-photo-slot img {
+                object-position: 20% top;
+            }
             .vision-content-col {
                 text-align: center;
             }
             .vision-content-col h2 { font-size: 27px; }
             .falsafah-grid { grid-template-columns: 1fr; }
             .psb-banner { min-height: 60vh; }
+            .psb-banner img { object-position: center 56%; }
             .psb-banner-content { padding: 32px 4%; }
             .psb-banner-text h2 { font-size: 26px; }
             .prestasi-layout { grid-template-columns: 1fr; }
             .prestasi-subgrid { grid-template-columns: 1fr; }
             .galeri-slide { flex: 0 0 82%; }
+            .galeri-slide[data-slot="3"] .galeri-photo-slot img {
+                object-position: center 10%;
+            }
             .footer-inner { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; gap: 6px; }
         }
@@ -1072,9 +1072,8 @@
                     <a href="profil.html" onclick="toggleDropdown(event, this)">Tentang Pondok &#9662;</a>
                     <div class="dropdown-menu">
                         <a href="profil.html#muqoddimah">Muqoddimah</a>
-                        <a href="profil.html#pimpinan">Profil Pimpinan</a>
                         <div class="has-submenu">
-                            <a href="profil.html#falsafah" onclick="toggleSubmenu(event, this)">Falsafah &rsaquo;</a>
+                            <a href="profil.html#muqoddimah" onclick="toggleSubmenu(event, this)">Falsafah &rsaquo;</a>
                             <div class="submenu">
                                 <a href="panca-jiwa.html">Panca Jiwa</a>
                                 <a href="motto.html">Motto</a>
@@ -1128,7 +1127,7 @@
 
     <section class="hero-iconic">
         <video autoplay muted loop playsinline poster="images/kubahpondok.jpg">
-            <source src="videos/cobacoba.mp4" type="video/mp4">
+            <source src="videos/beranda.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay">
             <div class="hero-content">
@@ -1146,8 +1145,8 @@
     <section id="visi-pondok" class="vision-statement reveal-on-scroll">
         <div class="vision-split-grid">
             <div class="pengasuh-card">
-                <div class="pengasuh-photo-slot" aria-label="Slot foto pengasuh pondok">
-                    <span>Foto Pengasuh</span>
+                <div class="pengasuh-photo-slot" aria-label="Foto pengasuh pondok">
+                    <img src="images/foto mudir.JPG" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='images/foto mudir.jpg';}" alt="Drs. KH. Bahruddin Sanusi, M.M - Pengasuh Pondok Modern IIBS El-'Azam">
                 </div>
                 <span class="pengasuh-role">Pengasuh Pondok Modern IIBS El-'Azam</span>
                 <div class="pengasuh-name">Drs. KH. Bahruddin Sanusi, M.M</div>
@@ -1198,7 +1197,7 @@
 
     <section class="psb-banner-wrap reveal-on-scroll">
         <div class="psb-banner">
-            <img src="images/kubahpondok.jpg" alt="Penerimaan Santri Baru Pondok Modern IIBS El-'Azam">
+            <img src="images/KA.jpeg" alt="Penerimaan Santri Baru Pondok Modern IIBS El-'Azam">
             <div class="psb-banner-content">
                 <div class="psb-banner-text">
                     <span class="psb-banner-kicker">Portal Pendaftaran</span>
@@ -1297,64 +1296,104 @@
         <div class="galeri-viewport">
             <div class="galeri-track" id="galeriTrack">
                 <article class="galeri-slide" data-slot="1">
-                    <div class="galeri-photo-slot"><span class="galeri-badge">01</span></div>
+                    <div class="galeri-photo-slot">
+                        <img src="images/a.JPG" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='images/a.jpg';}" alt="Dokumentasi Santri a">
+                    </div>
                 </article>
                 <article class="galeri-slide" data-slot="2">
-                    <div class="galeri-photo-slot"><span class="galeri-badge">02</span></div>
+                    <div class="galeri-photo-slot">
+                        <img src="images/b.JPG" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='images/b.jpg';}" alt="Dokumentasi Santri b">
+                    </div>
                 </article>
                 <article class="galeri-slide" data-slot="3">
-                    <div class="galeri-photo-slot"><span class="galeri-badge">03</span></div>
+                    <div class="galeri-photo-slot">
+                        <img src="images/c.JPG" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='images/c.jpg';}" alt="Dokumentasi Santri c">
+                    </div>
                 </article>
                 <article class="galeri-slide" data-slot="4">
-                    <div class="galeri-photo-slot"><span class="galeri-badge">04</span></div>
+                    <div class="galeri-photo-slot">
+                        <img src="images/d.JPG" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='images/d.jpg';}" alt="Dokumentasi Santri d">
+                    </div>
                 </article>
                 <article class="galeri-slide" data-slot="5">
-                    <div class="galeri-photo-slot"><span class="galeri-badge">05</span></div>
+                    <div class="galeri-photo-slot">
+                        <img src="images/e.JPG" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='images/e.jpg';}" alt="Dokumentasi Santri e">
+                    </div>
                 </article>
                 <article class="galeri-slide" data-slot="6">
-                    <div class="galeri-photo-slot"><span class="galeri-badge">06</span></div>
+                    <div class="galeri-photo-slot">
+                        <img src="images/f.JPG" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='images/f.jpg';}" alt="Dokumentasi Santri f">
+                    </div>
                 </article>
                 <article class="galeri-slide" data-slot="7">
-                    <div class="galeri-photo-slot"><span class="galeri-badge">07</span></div>
+                    <div class="galeri-photo-slot">
+                        <img src="images/g.JPG" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='images/g.jpg';}" alt="Dokumentasi Santri g">
+                    </div>
                 </article>
                 <article class="galeri-slide" data-slot="8">
-                    <div class="galeri-photo-slot"><span class="galeri-badge">08</span></div>
+                    <div class="galeri-photo-slot">
+                        <img src="images/h.JPG" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='images/h.jpg';}" alt="Dokumentasi Santri h">
+                    </div>
                 </article>
                 <article class="galeri-slide" data-slot="9">
-                    <div class="galeri-photo-slot"><span class="galeri-badge">09</span></div>
+                    <div class="galeri-photo-slot">
+                        <img src="images/i.JPG" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='images/i.jpg';}" alt="Dokumentasi Santri i">
+                    </div>
                 </article>
                 <article class="galeri-slide" data-slot="10">
-                    <div class="galeri-photo-slot"><span class="galeri-badge">10</span></div>
+                    <div class="galeri-photo-slot">
+                        <img src="images/j.JPG" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='images/j.jpg';}" alt="Dokumentasi Santri j">
+                    </div>
                 </article>
                 <article class="galeri-slide" data-slot="11">
-                    <div class="galeri-photo-slot"><span class="galeri-badge">11</span></div>
+                    <div class="galeri-photo-slot">
+                        <img src="images/k.JPG" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='images/k.jpg';}" alt="Dokumentasi Santri k">
+                    </div>
                 </article>
                 <article class="galeri-slide" data-slot="12">
-                    <div class="galeri-photo-slot"><span class="galeri-badge">12</span></div>
+                    <div class="galeri-photo-slot">
+                        <img src="images/l.JPG" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='images/l.jpg';}" alt="Dokumentasi Santri l">
+                    </div>
                 </article>
                 <article class="galeri-slide" data-slot="13">
-                    <div class="galeri-photo-slot"><span class="galeri-badge">13</span></div>
+                    <div class="galeri-photo-slot">
+                        <img src="images/m.JPG" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='images/m.jpg';}" alt="Dokumentasi Santri m">
+                    </div>
                 </article>
                 <article class="galeri-slide" data-slot="14">
-                    <div class="galeri-photo-slot"><span class="galeri-badge">14</span></div>
+                    <div class="galeri-photo-slot">
+                        <img src="images/n.JPG" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='images/n.jpg';}" alt="Dokumentasi Santri n">
+                    </div>
                 </article>
                 <article class="galeri-slide" data-slot="15">
-                    <div class="galeri-photo-slot"><span class="galeri-badge">15</span></div>
+                    <div class="galeri-photo-slot">
+                        <img src="images/o.JPG" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='images/o.jpg';}" alt="Dokumentasi Santri o">
+                    </div>
                 </article>
                 <article class="galeri-slide" data-slot="16">
-                    <div class="galeri-photo-slot"><span class="galeri-badge">16</span></div>
+                    <div class="galeri-photo-slot">
+                        <img src="images/p.JPG" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='images/p.jpg';}" alt="Dokumentasi Santri p">
+                    </div>
                 </article>
                 <article class="galeri-slide" data-slot="17">
-                    <div class="galeri-photo-slot"><span class="galeri-badge">17</span></div>
+                    <div class="galeri-photo-slot">
+                        <img src="images/q.JPG" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='images/q.jpg';}" alt="Dokumentasi Santri q">
+                    </div>
                 </article>
                 <article class="galeri-slide" data-slot="18">
-                    <div class="galeri-photo-slot"><span class="galeri-badge">18</span></div>
+                    <div class="galeri-photo-slot">
+                        <img src="images/r.JPG" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='images/r.jpg';}" alt="Dokumentasi Santri r">
+                    </div>
                 </article>
                 <article class="galeri-slide" data-slot="19">
-                    <div class="galeri-photo-slot"><span class="galeri-badge">19</span></div>
+                    <div class="galeri-photo-slot">
+                        <img src="images/s.JPG" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='images/s.jpg';}" alt="Dokumentasi Santri s">
+                    </div>
                 </article>
                 <article class="galeri-slide" data-slot="20">
-                    <div class="galeri-photo-slot"><span class="galeri-badge">20</span></div>
+                    <div class="galeri-photo-slot">
+                        <img src="images/t.JPG" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='images/t.jpg';}" alt="Dokumentasi Santri t">
+                    </div>
                 </article>
             </div>
         </div>

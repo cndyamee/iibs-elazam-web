@@ -1,16 +1,19 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muqoddimah | Pondok Modern IIBS El-'Azam</title>
-    <meta name="description" content="Muqoddimah Pondok Pesantren IIBS El-'Azam Kuningan.">
+    <meta name="description" content="Muqoddimah dan sejarah singkat Pondok Modern IIBS El-'Azam Pasawahan, Kabupaten Kuningan.">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --sky-deep: #1E5A82;
             --sky-tint: #F4F9FC;
             --gold-accent: #C5A059;
+            --gold-btn: #EAB308;
+            --gold-btn-hover: #CA8A04;
             --ink-dark: #182230;
             --ink-body: #475467;
             --ink-muted: #667085;
@@ -19,25 +22,36 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--white); color: var(--ink-dark); font-size: 13.5px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
-        h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.01em; }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--white);
+            color: var(--ink-dark);
+            font-size: 13.5px;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            padding-top: 64px;
+        }
+        h1, h2, h3, h4, .serif { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.01em; }
 
         header {
             background: var(--sky-deep);
             padding: 6px 6%;
             min-height: 64px;
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 16px;
             border-bottom: 2px solid var(--gold-accent);
             transition: padding 0.3s ease, box-shadow 0.3s ease;
         }
 
         header.scrolled {
-            padding: 6px 6%;
             min-height: 58px;
             box-shadow: 0 6px 20px rgba(30, 90, 130, 0.25);
         }
@@ -49,12 +63,12 @@
             border-bottom: none;
             min-height: 44px;
             position: relative;
+            flex-shrink: 0;
         }
 
         .brand-logo-wrap {
             display: flex;
             align-items: center;
-            transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
         .brand-logo-circle {
@@ -68,7 +82,6 @@
             align-items: center;
             justify-content: center;
             overflow: visible;
-            box-shadow: none;
         }
 
         .brand-logo-circle img {
@@ -92,6 +105,7 @@
             color: #FDE68A;
             font-weight: 600;
             line-height: 1.2;
+            white-space: nowrap;
         }
 
         .brand-wordmark strong {
@@ -101,9 +115,15 @@
             color: var(--white);
             letter-spacing: 0.8px;
             line-height: 1.1;
+            white-space: nowrap;
         }
 
-        .brand, .brand:visited, .brand:hover, .brand-wordmark, .brand-wordmark small, .brand-wordmark strong {
+        .brand,
+        .brand:visited,
+        .brand:hover,
+        .brand-wordmark,
+        .brand-wordmark small,
+        .brand-wordmark strong {
             text-decoration: none !important;
             border-bottom: none !important;
         }
@@ -116,21 +136,21 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        nav ul { list-style: none; display: flex; align-items: center; gap: 28px; }
-        nav ul li { position: relative; }
+        nav ul { list-style: none; display: flex; align-items: center; gap: 24px; }
+        nav ul li { position: relative; flex-shrink: 0; }
         nav ul li > a {
             color: rgba(255, 255, 255, 0.94); text-decoration: none; font-size: 12.5px; font-weight: 500;
-            letter-spacing: 0.3px; padding: 8px 0; display: inline-block; border-bottom: 1.5px solid transparent; transition: 0.2s;
+            letter-spacing: 0.3px; padding: 8px 0; display: inline-block; border-bottom: 1.5px solid transparent;
+            transition: 0.2s; white-space: nowrap;
         }
         nav ul li > a:hover, nav ul li > a.active { color: var(--white); border-bottom-color: #FDE68A; }
 
         .dropdown-menu {
             display: none; position: absolute; top: 100%; left: 0; background: var(--white);
-            min-width: 225px; border: 1px solid var(--line); border-top: 2px solid var(--sky-deep);
+            min-width: 220px; border: 1px solid var(--line); border-top: 2px solid var(--sky-deep);
             box-shadow: 0 12px 28px rgba(16, 24, 40, 0.08); padding: 6px 0; z-index: 999;
         }
         nav ul li:hover > .dropdown-menu { display: block; }
-
         .dropdown-menu a {
             display: flex; justify-content: space-between; align-items: center;
             padding: 9px 16px; color: var(--ink-body); text-decoration: none; font-size: 12px; transition: 0.15s;
@@ -140,95 +160,199 @@
         .has-submenu { position: relative; }
         .submenu {
             display: none; position: absolute; top: -2px; left: 100%; background: var(--white);
-            min-width: 195px; border: 1px solid var(--line); border-top: 2px solid var(--gold-accent);
+            min-width: 190px; border: 1px solid var(--line); border-top: 2px solid var(--gold-accent);
             box-shadow: 0 12px 28px rgba(16, 24, 40, 0.1); padding: 6px 0; z-index: 1000;
         }
         .has-submenu:hover > .submenu { display: block; }
 
-        .header-actions { display: flex; align-items: center; gap: 8px; }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: 8px;
+            flex-shrink: 0;
+        }
+
+        .btn-daftar-nav {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 7px 16px;
+            background-color: var(--gold-btn);
+            color: var(--ink-dark) !important;
+            text-decoration: none !important;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 999px;
+            white-space: nowrap;
+            line-height: 1.2;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .btn-daftar-nav:hover {
+            background-color: var(--gold-btn-hover);
+            color: var(--ink-dark) !important;
+        }
 
         .icon-search {
             background: transparent; border: 1px solid rgba(255, 255, 255, 0.35); color: var(--white);
             width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;
+            flex-shrink: 0;
         }
         .icon-search:hover { background: rgba(255, 255, 255, 0.15); }
 
+        .search-popover {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 6%;
+            background: var(--white);
+            padding: 12px;
+            border: 1px solid var(--line);
+            border-top: 2px solid var(--sky-deep);
+            box-shadow: 0 12px 28px rgba(16, 24, 40, 0.14);
+            z-index: 1100;
+            width: min(340px, 88vw);
+        }
+
+        .search-popover.open {
+            display: block;
+        }
+
+        .search-form {
+            display: flex;
+            align-items: stretch;
+        }
+
+        .search-form input {
+            flex: 1;
+            min-width: 0;
+            padding: 9px 12px;
+            border: 1px solid #D0D5DD;
+            border-right: none;
+            background: #F4F7F6;
+            color: var(--ink-dark);
+            font-size: 12.5px;
+            outline: none;
+        }
+
+        .search-form input:focus {
+            background: var(--white);
+            border-color: var(--sky-deep);
+        }
+
+        .search-form button {
+            padding: 0 16px;
+            background: var(--sky-deep);
+            color: var(--white);
+            border: 1px solid var(--sky-deep);
+            font-size: 12.5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+
+        .search-form button:hover {
+            background: #164463;
+        }
+
         .menu-toggle {
-            display: none; background: transparent; border: 1px solid rgba(255, 255, 255, 0.35); color: var(--white);
-            width: 32px; height: 32px; border-radius: 6px; align-items: center; justify-content: center; cursor: pointer; font-size: 16px;
+            display: none;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            color: var(--white);
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 16px;
+            flex-shrink: 0;
         }
         .menu-toggle:hover { background: rgba(255, 255, 255, 0.15); }
 
-        .search-popover {
-            display: none; position: absolute; top: calc(100% + 8px); right: 6%; background: var(--white);
-            padding: 12px; border: 1px solid var(--line); border-top: 2px solid var(--sky-deep);
-            box-shadow: 0 12px 28px rgba(16, 24, 40, 0.14); z-index: 1100; width: min(340px, 88vw);
-        }
-        .search-popover.open { display: block; }
-        .search-form { display: flex; align-items: stretch; }
-        .search-form input {
-            flex: 1; min-width: 0; padding: 9px 12px; border: 1px solid #D0D5DD; border-right: none;
-            background: #F4F7F6; color: var(--ink-dark); font-size: 12.5px; outline: none;
-        }
-        .search-form input:focus { background: var(--white); border-color: var(--sky-deep); }
-        .search-form button {
-            padding: 0 16px; background: var(--sky-deep); color: var(--white); border: 1px solid var(--sky-deep);
-            font-size: 12.5px; font-weight: 500; cursor: pointer; transition: background 0.2s; white-space: nowrap;
-        }
-        .search-form button:hover { background: #164463; }
-
-        .page-hero {
+        .page-banner {
             background: var(--sky-tint);
             border-bottom: 1px solid #D6E9F5;
-            padding: 44px 6% 36px;
+            padding: 40px 6%;
         }
-        .page-hero-inner { max-width: 920px; margin: 0 auto; }
-        .breadcrumb { font-size: 12px; color: var(--ink-muted); margin-bottom: 12px; }
-        .breadcrumb a { color: var(--sky-deep); text-decoration: none; font-weight: 500; }
-        .page-kicker {
-            display: inline-block;
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 1.4px;
-            text-transform: uppercase;
-            color: var(--sky-deep);
+        .page-banner-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+        .breadcrumb {
+            font-size: 12px;
+            color: var(--ink-muted);
             margin-bottom: 8px;
         }
-        .page-hero h1 { font-size: 40px; color: var(--sky-deep); font-weight: 700; margin-bottom: 10px; line-height: 1.15; }
-        .page-hero p { font-size: 14px; color: var(--ink-body); max-width: 720px; }
-
-        .page-wrap { max-width: 920px; margin: 40px auto 72px; padding: 0 6%; }
-
-        .muqoddimah-section h2 {
-            font-size: 30px; color: var(--sky-deep); font-weight: 700; margin-bottom: 18px;
-            padding-bottom: 8px; border-bottom: 1px solid var(--line);
+        .breadcrumb a {
+            color: var(--sky-deep);
+            text-decoration: none;
         }
-        .muqoddimah-section h3 {
-            font-size: 22px; color: var(--sky-deep); font-weight: 700; margin-top: 24px; margin-bottom: 10px;
+        .page-banner h1 {
+            font-size: 36px;
+            color: var(--sky-deep);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 6px;
         }
-        .muqoddimah-section p {
-            font-size: 14px; color: var(--ink-body); margin-bottom: 14px;
-        }
-        .muqoddimah-section ul {
-            padding-left: 20px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 8px;
-        }
-        .muqoddimah-section ul li {
-            font-size: 14px; color: var(--ink-body);
+        .page-banner p {
+            font-size: 13.5px;
+            color: var(--ink-body);
+            max-width: 680px;
         }
 
-        .milestone-stamp {
-            margin-top: 26px; padding-top: 16px; border-top: 1px solid var(--line);
+        .content-wrap {
+            max-width: 1180px;
+            margin: 48px auto 72px;
+            padding: 0 4%;
         }
-        .milestone-stamp strong {
-            display: block; font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--sky-deep); line-height: 1.2;
+
+        .section-block {
+            scroll-margin-top: 84px;
         }
-        .milestone-stamp span {
-            font-size: 14px; color: var(--ink-body);
+
+        .tab-header-line {
+            border-bottom: 1.5px solid var(--sky-deep);
+            margin-bottom: 28px;
+            display: flex;
+            align-items: flex-end;
+        }
+        .tab-header-line span {
+            background-color: var(--sky-deep);
+            color: var(--white);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            padding: 6px 14px;
+            text-transform: uppercase;
+        }
+
+        .prose-article {
+            max-width: 880px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .prose-article h2 {
+            font-size: 30px;
+            color: var(--sky-deep);
+            font-weight: 700;
+            line-height: 1.25;
+            margin-bottom: 4px;
+        }
+        .prose-article p {
+            font-size: 14.5px;
+            color: var(--ink-body);
+            line-height: 1.9;
+            text-align: justify;
         }
 
         footer {
-            background: var(--sky-deep); color: rgba(255, 255, 255, 0.88);
-            padding: 44px 6% 22px; border-top: 2px solid var(--gold-accent);
+            background: var(--sky-deep);
+            color: rgba(255, 255, 255, 0.88); padding: 44px 6% 22px; border-top: 2px solid var(--gold-accent);
         }
         .footer-inner {
             max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr;
@@ -238,10 +362,7 @@
         .footer-inner p, .footer-inner li { font-size: 12.5px; line-height: 1.7; list-style: none; margin-bottom: 6px; }
         .footer-inner a { color: rgba(255, 255, 255, 0.88); text-decoration: none; }
         .footer-inner a:hover { color: #FDE68A; }
-        .footer-bottom {
-            max-width: 1180px; margin: 18px auto 0; display: flex; justify-content: space-between;
-            font-size: 11.5px; color: rgba(255, 255, 255, 0.72);
-        }
+        .footer-bottom { max-width: 1180px; margin: 18px auto 0; display: flex; justify-content: space-between; font-size: 11.5px; color: rgba(255, 255, 255, 0.72); }
 
         @media (max-width: 900px) {
             header {
@@ -249,53 +370,56 @@
                 justify-content: space-between;
                 align-items: center;
             }
-
-            .menu-toggle {
-                display: flex;
-                order: 1;
-            }
-
-            .brand {
-                order: 2;
-                margin: 0 auto;
-            }
-
-            .header-actions {
-                order: 3;
-            }
-
-            .search-popover {
-                right: 6%;
-            }
+            .menu-toggle { display: flex; order: 1; }
+            .brand { order: 2; margin: 0 auto; }
+            .header-actions { order: 3; margin-left: 8px; gap: 8px; }
+            .btn-daftar-nav { padding: 6px 12px; font-size: 11.5px; }
+            .search-popover { right: 6%; }
 
             nav {
-                display: none; position: absolute; top: 100%; left: 0; right: 0;
-                background: var(--sky-deep); border-bottom: 2px solid var(--gold-accent);
-                padding: 12px 6% 18px; box-shadow: 0 12px 24px rgba(15, 42, 68, 0.25);
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--sky-deep);
+                border-bottom: 2px solid var(--gold-accent);
+                padding: 12px 6% 18px;
+                box-shadow: 0 12px 24px rgba(15, 42, 68, 0.25);
             }
             nav.open { display: block; }
-            nav ul { flex-direction: column; align-items: flex-start; gap: 8px; }
+            nav ul { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
             nav ul li { width: 100%; }
             nav ul li:hover > .dropdown-menu { display: none; }
-
             .dropdown-menu {
-                position: static; display: none; background: rgba(255, 255, 255, 0.06);
-                border: none; border-left: 2px solid #FDE68A; box-shadow: none;
-                padding: 4px 0 4px 12px; margin-top: 4px;
+                position: static;
+                display: none;
+                background: rgba(255, 255, 255, 0.06);
+                border: none;
+                border-left: 2px solid #FDE68A;
+                box-shadow: none;
+                padding: 4px 0 4px 12px;
+                margin-top: 4px;
             }
             nav ul li.dropdown.open > .dropdown-menu { display: block; }
-            .dropdown-menu a { color: rgba(255, 255, 255, 0.9); padding: 6px 8px; }
+            .dropdown-menu a { color: rgba(255, 255, 255, 0.88); padding: 5px 8px; }
             .dropdown-menu a:hover { background: transparent; color: #FDE68A; }
-
             .has-submenu:hover > .submenu { display: none; }
             .submenu {
-                position: static; display: none; background: rgba(255, 255, 255, 0.05);
-                border: none; border-left: 2px solid var(--gold-accent); box-shadow: none;
-                padding: 2px 0 2px 14px; margin: 2px 0 6px;
+                position: static;
+                display: none;
+                background: rgba(255, 255, 255, 0.05);
+                border: none;
+                border-left: 2px solid var(--gold-accent);
+                box-shadow: none;
+                padding: 2px 0 2px 14px;
+                margin: 2px 0 6px;
             }
             .has-submenu.open > .submenu { display: block; }
 
-            .page-hero h1 { font-size: 30px; }
+            .page-banner h1 { font-size: 28px; }
+            .prose-article h2 { font-size: 25px; }
+            .prose-article p { text-align: left; }
             .footer-inner { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; gap: 6px; }
         }
@@ -326,9 +450,8 @@
                     <a href="profil.html" class="active" onclick="toggleDropdown(event, this)">Tentang Pondok &#9662;</a>
                     <div class="dropdown-menu">
                         <a href="profil.html#muqoddimah">Muqoddimah</a>
-                        <a href="profil.html#pimpinan">Profil Pimpinan</a>
                         <div class="has-submenu">
-                            <a href="profil.html#falsafah" onclick="toggleSubmenu(event, this)">Falsafah &rsaquo;</a>
+                            <a href="profil.html#muqoddimah" onclick="toggleSubmenu(event, this)">Falsafah &rsaquo;</a>
                             <div class="submenu">
                                 <a href="panca-jiwa.html">Panca Jiwa</a>
                                 <a href="motto.html">Motto</a>
@@ -339,16 +462,16 @@
                 <li class="dropdown">
                     <a href="kurikulum.html" onclick="toggleDropdown(event, this)">Pendidikan &#9662;</a>
                     <div class="dropdown-menu">
-                        <a href="kurikulum.html#kurikulum">Kurikulum Pondok &amp; Sekolah</a>
-                        <a href="kurikulum.html#ekskul">Ekstrakurikuler</a>
-                        <a href="kurikulum.html#jadwal">Jadwal Harian &amp; Mingguan</a>
+                        <a href="kurikulum.html">Kurikulum Pondok &amp; Sekolah</a>
+                        <a href="ekstrakurikuler.html">Ekstrakurikuler</a>
+                        <a href="jadwal.html">Jadwal Harian &amp; Mingguan</a>
                     </div>
                 </li>
                 <li><a href="galeri.html">Warta &amp; Arsip</a></li>
                 <li class="dropdown">
                     <a href="psb.html" onclick="toggleDropdown(event, this)">Pendaftaran &#9662;</a>
                     <div class="dropdown-menu">
-                        <a href="psb.html">Syarat &amp; Jadwal PSB 2027</a>
+                        <a href="psb.html">Penerimaan Santri Baru (PSB)</a>
                         <a href="biaya.html">Pembiayaan Pendidikan</a>
                         <a href="perlengkapan.html">Perlengkapan Santri</a>
                     </div>
@@ -358,6 +481,12 @@
         </nav>
 
         <div class="header-actions">
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLScqXFZ52vTLcIygKnMtI5K5_jBDjHdJ_qKKoQYLFE7EmR-4Og/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-daftar-nav"
+            >Daftar Sekarang</a>
             <button class="icon-search" id="searchToggleBtn" onclick="toggleSearch(event)" title="Cari Informasi" aria-label="Cari Informasi">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="11" cy="11" r="8"></circle>
@@ -374,50 +503,33 @@
         </div>
     </header>
 
-    <section class="page-hero">
-        <div class="page-hero-inner">
-            <div class="breadcrumb">
-                <a href="index.html">Beranda</a> &rsaquo; Tentang Pondok &rsaquo; Muqoddimah
-            </div>
-            <span class="page-kicker">Profil &amp; Sejarah Pondok</span>
-            <h1>Tentang Kami</h1>
-            <p>Mengenal lebih dekat latar belakang berdirinya, lingkungan belajar, serta sistem pengasuhan Pondok Modern IIBS El-'Azam.</p>
+    <section class="page-banner">
+        <div class="page-banner-inner">
+            <div class="breadcrumb"><a href="index.html">Beranda</a> / Tentang Pondok / Muqoddimah</div>
+            <h1>Muqoddimah</h1>
+            <p>Sekilas perjalanan, latar belakang pendirian, dan ikhtiar pendidikan di Pondok Modern IIBS El-'Azam.</p>
         </div>
     </section>
 
-    <main class="page-wrap">
-        <section id="muqoddimah" class="muqoddimah-section">
-            <h2>MUQODDIMAH</h2>
-
-            <p>Pondok Pesantren IIBS El-'Azam adalah lembaga pendidikan Islam berbasis sistem pesantren modern yang memadukan pendidikan keagamaan holistik dengan pendidikan formal tingkat MTs/SMP dan MA/SMA.</p>
-
-            <p>Berdiri sejak tahun 2007, IIBS El-'Azam terus berkomitmen untuk memberikan dedikasi terbaik dalam dunia pendidikan Islam. Meskipun disadari bahwasanya perjalanan ini masih jauh dari kata sempurna, sesuai dengan namanya, 'Azam (tekad yang kuat), kami menjadikan tekad mendalam tersebut sebagai dorongan dan motivasi utama untuk senantiasa memberikan yang terbaik bagi masa depan putra putri bangsa.</p>
-
-            <h3>Lingkungan Belajar: Asri, Sehat, dan Kondusif</h3>
-            <p>Terletak di kawasan perkampungan yang tenang di kaki Gunung Ciremai, Pondok Pesantren IIBS El-'Azam menawarkan suasana belajar dan pembinaan yang sangat ideal:</p>
-            <ul>
-                <li><strong>Jauh dari Polusi:</strong> Bebas dari hiruk pikuk dan polusi perkotaan, menciptakan ketenangan dalam menuntut ilmu.</li>
-                <li><strong>Lingkungan Asri &amp; Udara Segar:</strong> Dikelilingi pemandangan alam yang indah, udara pegunungan yang segar, serta melimpahnya sumber air yang jernih.</li>
-                <li><strong>Atmosfer Kondusif:</strong> Lingkungan alami ini sangat mendukung fokus, kesehatan fisik, serta kedamaian spiritual para santri.</li>
-            </ul>
-
-            <h3>Sistem Pengasuhan &amp; Keunggulan Program</h3>
-            <p>Melalui sistem pengasuhan berbasis asrama (boarding school) 24 jam, para santri dibimbing secara intensif dalam seluruh aktivitas pembiasaan, ibadah, dan disiplin hidup sehari hari:</p>
-            <ul>
-                <li><strong>Integrasi Pendidikan Formal &amp; Pesantren:</strong> Penerapan kurikulum terpadu antara jenjang formal (MTs/SMP &amp; MA/SMA) dengan pendalaman keilmuan pesantren.</li>
-                <li><strong>Penguasaan Bahasa Internasional (Bilingual Environment):</strong> Santri dibiasakan dan dilatih berkomunikasi aktif menggunakan dua bahasa utama:
-                    <ul>
-                        <li><strong>Bahasa Arab:</strong> Sebagai bahasa agama dan pemahaman literatur Islam.</li>
-                        <li><strong>Bahasa Inggris:</strong> Sebagai bahasa ilmu pengetahuan dan pergaulan dunia global.</li>
-                    </ul>
-                </li>
-                <li><strong>Kemandirian &amp; Kewirausahaan (Entrepreneurship):</strong> Selain pendidikan akademis dan keagamaan, santri dibekali dengan berbagai pelatihan kewirausahaan untuk membentuk jiwa kepemimpinan, kemandirian, serta kesiapan melangkah di masyarakat.</li>
-            </ul>
-
-            <div class="milestone-stamp">
-                <strong>2007</strong>
-                <span>Berdiri dan Mengabdi</span>
+    <main class="content-wrap">
+        <section id="muqoddimah" class="section-block">
+            <div class="tab-header-line">
+                <span>Muqoddimah</span>
             </div>
+
+            <article class="prose-article">
+                <h2>Menumbuhkan Tekad Pendidikan di Kaki Gunung Ciremai</h2>
+
+                <p>Pondok Modern Integrated Islamic Boarding School (IIBS) El-'Azam berdiri sejak tahun 2007 di Blok Reuma Dusun Karang Anyar, Desa Ciwiru, Kecamatan Pasawahan, Kabupaten Kuningan, Jawa Barat. Berlokasi di kawasan perkampungan yang tenang tepat di kaki Gunung Ciremai, pondok ini dikelilingi suasana alam yang sejuk, jauh dari polusi dan hiruk-pikuk perkotaan, serta memiliki sumber air yang jernih. Kondisi lingkungan yang asri tersebut menjadi ruang tumbuh yang kondusif bagi para santri dalam menuntut ilmu, beribadah, dan menempa diri.</p>
+
+                <p>Nama El-'Azam diambil dari kata bahasa Arab yang bermakna tekad dan kemauan yang kuat. Semangat itulah yang menjadi pijakan awal berdirinya pesantren ini di tengah berbagai keterbatasan pada masa perintisan. Dengan tekad yang bulat untuk menghadirkan lembaga pendidikan Islam yang bermutu, pondok ini dirintis dan diasuh oleh Drs. KH. Bahruddin Sanusi, M.M sebagai ikhtiar melahirkan generasi muda yang beriman kokoh, berakhlak mulia, dan memiliki daya juang tinggi.</p>
+
+                <p>Dalam penyelenggaraan pendidikannya, Pondok Modern IIBS El-'Azam memadukan sistem pendidikan kepesantrenan modern yang mengacu pada tradisi keilmuan Pondok Modern Darussalam Gontor dengan kurikulum pendidikan formal tingkat Sekolah Menengah Pertama (SMP) dan Madrasah Aliyah (MA). Melalui integrasi ini, santri tidak hanya mendalami ilmu-ilmu keislaman, tahfidzul Qur'an, dan kajian kitab, tetapi juga memperoleh bekal pengetahuan umum yang terstruktur secara seimbang.</p>
+
+                <p>Sebagai pondok modern, penguasaan bahasa asing menjadi salah satu ciri utama dalam kehidupan sehari-hari santri. Bahasa Arab sebagai bahasa Al-Qur'an dan Bahasa Inggris sebagai bahasa pergaulan dunia dibiasakan secara aktif dalam percakapan harian, latihan pidato, maupun kegiatan belajar di kelas. Kedisiplinan berbahasa dan tata tertib asrama dijalankan secara bersama-sama melalui pembinaan pengurus santri dan para ustadz, sehingga terbentuk budaya komunikasi yang santun, tertib, dan penuh tanggung jawab.</p>
+
+                <p>Selain pembinaan akademik dan kebahasaan, Pondok Modern IIBS El-'Azam juga mengembangkan konsep pesantren hijau melalui pembelajaran agronomi dan kepedulian terhadap lingkungan. Di area pondok, santri dilatih bercocok tanam berbagai tanaman hortikultura, merawat pepohonan, hingga membudidayakan ikan sebagai sarana belajar kemandirian dan tanggung jawab. Berbekal semangat berdiri di atas dan untuk semua golongan, Pondok Modern IIBS El-'Azam terus berkomitmen mendidik santri agar tumbuh menjadi pribadi yang berilmu luas, mandiri, dan bermanfaat bagi agama, bangsa, serta masyarakat.</p>
+            </article>
         </section>
     </main>
 
@@ -430,11 +542,14 @@
             <div>
                 <h4>Tautan Halaman</h4>
                 <ul>
-                    <li><a href="index.html">Beranda</a></li>
-                    <li><a href="profil.html">Muqoddimah</a></li>
                     <li><a href="panca-jiwa.html">Panca Jiwa Pondok</a></li>
                     <li><a href="motto.html">Motto Pondok</a></li>
-                    <li><a href="psb.html">Pendaftaran Santri Baru (PSB)</a></li>
+                    <li><a href="kurikulum.html">Kurikulum Pondok &amp; Sekolah</a></li>
+                    <li><a href="ekstrakurikuler.html">Ekstrakurikuler</a></li>
+                    <li><a href="jadwal.html">Jadwal Harian &amp; Mingguan</a></li>
+                    <li><a href="psb.html">Penerimaan Santri Baru (PSB)</a></li>
+                    <li><a href="biaya.html">Pembiayaan Pendidikan</a></li>
+                    <li><a href="perlengkapan.html">Perlengkapan Santri</a></li>
                 </ul>
             </div>
             <div>
@@ -443,11 +558,12 @@
                     <li>Blok Reuma Dusun Karang Anyar, Ds. Ciwiru, Kec. Pasawahan, Kab. Kuningan 45559</li>
                     <li>Telepon / WA: <a href="https://wa.me/62895401985294" target="_blank">0895401985294</a></li>
                     <li>Email: pondokmoderniibselazam@gmail.com</li>
+                    <li>Rekening: 1320020251 (A.n ELAZAM YYS)</li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <span>&copy; 2026 Pondok Modern IIBS El-'Azam (Integrated Islamic Boarding School)</span>
+            <span>&copy; 2026 Pondok Modern IIBS El-'Azam &mdash; Integrated Islamic Boarding School</span>
             <span>Pasawahan, Kuningan, Jawa Barat</span>
         </div>
     </footer>
@@ -461,7 +577,8 @@
         function toggleDropdown(event, linkEl) {
             if (window.innerWidth <= 900) {
                 event.preventDefault();
-                linkEl.parentElement.classList.toggle("open");
+                const parentLi = linkEl.parentElement;
+                parentLi.classList.toggle("open");
             }
         }
 
@@ -500,21 +617,38 @@
             const kata = input ? input.value.trim() : "";
             if (!kata) return;
             const k = kata.toLowerCase();
-            if (k.includes("panca")) window.location.href = "panca-jiwa.html";
-            else if (k.includes("motto")) window.location.href = "motto.html";
-            else if (k.includes("muqoddimah") || k.includes("tentang")) window.location.href = "profil.html";
-            else if (k.includes("biaya") || k.includes("syarat") || k.includes("daftar")) window.location.href = "psb.html";
-            else if (k.includes("jadwal") || k.includes("kurikulum") || k.includes("ekskul")) window.location.href = "kurikulum.html";
-            else if (k.includes("kontak") || k.includes("alamat")) window.location.href = "kontak.html";
-            else window.location.href = "galeri.html";
+            if (k.includes("panca")) {
+                window.location.href = "panca-jiwa.html";
+            } else if (k.includes("motto")) {
+                window.location.href = "motto.html";
+            } else if (k.includes("perlengkapan")) {
+                window.location.href = "perlengkapan.html";
+            } else if (k.includes("biaya") || k.includes("pembiayaan")) {
+                window.location.href = "biaya.html";
+            } else if (k.includes("syarat") || k.includes("daftar") || k.includes("psb")) {
+                window.location.href = "psb.html";
+            } else if (k.includes("jadwal")) {
+                window.location.href = "jadwal.html";
+            } else if (k.includes("ekskul") || k.includes("ekstrakurikuler")) {
+                window.location.href = "ekstrakurikuler.html";
+            } else if (k.includes("kurikulum") || k.includes("pondok") || k.includes("sekolah")) {
+                window.location.href = "kurikulum.html";
+            } else if (k.includes("kontak") || k.includes("alamat")) {
+                window.location.href = "kontak.html";
+            } else {
+                window.location.href = "galeri.html";
+            }
         }
 
         window.addEventListener("scroll", function() {
             const header = document.getElementById("main-header");
-            if (!header) return;
-            if (window.scrollY > 50) header.classList.add("scrolled");
-            else header.classList.remove("scrolled");
+            if (window.scrollY > 50) {
+                header.classList.add("scrolled");
+            } else {
+                header.classList.remove("scrolled");
+            }
         });
     </script>
+
 </body>
 </html>

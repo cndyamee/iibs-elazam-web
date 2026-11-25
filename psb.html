@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Penerimaan Santri Baru (PSB) | Pondok Modern IIBS El-'Azam</title>
-    <meta name="description" content="Informasi Penerimaan Santri Baru (PSB) Pondok Modern IIBS El-'Azam Pasawahan, Kabupaten Kuningan.">
+    <meta name="description" content="Syarat pendaftaran dan jadwal tes Penerimaan Santri Baru (PSB) Pondok Modern IIBS El-'Azam Pasawahan, Kabupaten Kuningan.">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
     <style>
@@ -311,7 +311,7 @@
         }
 
         .section-block {
-            margin-bottom: 44px;
+            margin-bottom: 48px;
             scroll-margin-top: 84px;
         }
 
@@ -331,29 +331,60 @@
             text-transform: uppercase;
         }
 
-        .prose-article {
-            max-width: 880px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
+        .psb-table-wrap {
+            overflow-x: auto;
+            border: 1px solid var(--line);
+            border-radius: 6px;
         }
-        .prose-article h2 {
-            font-size: 28px;
+
+        table.psb-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        table.psb-table th {
+            background: var(--sky-tint);
             color: var(--sky-deep);
-            font-weight: 700;
-            line-height: 1.25;
-            margin-top: 4px;
+            font-weight: 600;
+            text-align: left;
+            padding: 12px 16px;
+            border-bottom: 1.5px solid var(--sky-deep);
         }
-        .prose-article p {
-            font-size: 14px;
+
+        table.psb-table td {
+            padding: 11px 16px;
+            border-bottom: 1px solid var(--line);
             color: var(--ink-body);
-            line-height: 1.85;
-            text-align: justify;
+            vertical-align: top;
+        }
+
+        table.psb-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .no-col {
+            width: 64px;
+            font-weight: 600;
+            color: var(--ink-dark);
+            text-align: center;
+        }
+
+        .tahap-col {
+            width: 260px;
+            font-weight: 600;
+            color: var(--ink-dark);
+        }
+
+        .table-note {
+            margin-top: 12px;
+            font-size: 12.5px;
+            color: var(--ink-muted);
+            font-style: italic;
         }
 
         .psb-cta-box {
-            margin-top: 28px;
-            max-width: 880px;
+            margin-top: 32px;
             background: var(--sky-tint);
             border: 1px solid #D6E9F5;
             border-left: 3px solid var(--sky-deep);
@@ -382,24 +413,6 @@
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
-        }
-
-        .btn-daftar-page {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10px 20px;
-            background-color: var(--gold-btn);
-            color: var(--ink-dark);
-            text-decoration: none;
-            font-size: 12.5px;
-            font-weight: 600;
-            border-radius: 6px;
-            transition: background-color 0.2s ease;
-        }
-
-        .btn-daftar-page:hover {
-            background-color: var(--gold-btn-hover);
         }
 
         .btn-outline-page {
@@ -490,8 +503,7 @@
             .has-submenu.open > .submenu { display: block; }
 
             .page-banner h1 { font-size: 28px; }
-            .prose-article h2 { font-size: 24px; }
-            .prose-article p { text-align: left; }
+            .tahap-col { width: auto; }
             .footer-inner { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; gap: 6px; }
         }
@@ -578,37 +590,111 @@
         <div class="page-banner-inner">
             <div class="breadcrumb"><a href="index.html">Beranda</a> / Pendaftaran / Penerimaan Santri Baru (PSB)</div>
             <h1>Penerimaan Santri Baru (PSB)</h1>
-            <p>Panduan pendaftaran calon santri baru Pondok Modern IIBS El-'Azam Pasawahan, Kabupaten Kuningan.</p>
+            <p>Persyaratan administrasi serta jadwal pendaftaran dan tes masuk calon santri baru Pondok Modern IIBS El-'Azam.</p>
         </div>
     </section>
 
     <main class="content-wrap">
         <section class="section-block">
             <div class="tab-header-line">
-                <span>Informasi PSB</span>
+                <span>Syarat Pendaftaran Santri Baru</span>
             </div>
 
-            <article class="prose-article">
-                <h2>Alur &amp; Ketentuan Pendaftaran</h2>
-                <p>Pondok Modern IIBS El-'Azam menerima calon santri baru untuk jenjang pendidikan berasrama dengan memadukan pembinaan kepesantrenan modern dan pendidikan formal. Orang tua atau wali calon santri dapat mengisi formulir pendaftaran daring melalui tautan resmi yang disediakan maupun menghubungi bagian sekretariat pondok apabila memerlukan informasi lanjutan.</p>
-                <p>Setelah pengisian formulir awal, calon santri dan wali akan diarahkan untuk melengkapi berkas administrasi, mengikuti tahapan seleksi atau observasi sesuai ketentuan panitia PSB, serta menyesuaikan kebutuhan perlengkapan asrama sebelum masuk pondok. Rincian mengenai pembiayaan pendidikan dan daftar perlengkapan santri dapat dilihat pada halaman khusus yang tersedia di menu Pendaftaran.</p>
+            <div class="psb-table-wrap">
+                <table class="psb-table">
+                    <thead>
+                        <tr>
+                            <th class="no-col">No.</th>
+                            <th>Persyaratan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="no-col">1</td>
+                            <td>Fotokopi Ijazah SD/MI/SMP/MTs - 5 lembar legalisir</td>
+                        </tr>
+                        <tr>
+                            <td class="no-col">2</td>
+                            <td>Fotokopi Kartu NISN - 5 lembar</td>
+                        </tr>
+                        <tr>
+                            <td class="no-col">3</td>
+                            <td>Fotokopi Kartu Keluarga - 5 lembar</td>
+                        </tr>
+                        <tr>
+                            <td class="no-col">4</td>
+                            <td>Fotokopi Akta Kelahiran - 5 lembar</td>
+                        </tr>
+                        <tr>
+                            <td class="no-col">5</td>
+                            <td>Surat Keterangan Kelakuan Baik dari sekolah - 1 lembar</td>
+                        </tr>
+                        <tr>
+                            <td class="no-col">6</td>
+                            <td>Surat Keterangan Lulus dari sekolah - 1 lembar</td>
+                        </tr>
+                        <tr>
+                            <td class="no-col">7</td>
+                            <td>Pas foto 2x3 dan 3x4 masing-masing 5 lembar; putra berpeci dan putri berkerudung</td>
+                        </tr>
+                        <tr>
+                            <td class="no-col">8</td>
+                            <td>Mengisi formulir yang disediakan panitia</td>
+                        </tr>
+                        <tr>
+                            <td class="no-col">9</td>
+                            <td>Fotokopi rapor terakhir kelas 6</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
-                <h2>Layanan Informasi &amp; Sekretariat</h2>
-                <p>Bagi calon wali santri yang ingin menanyakan jadwal gelombang pendaftaran, kuota, maupun teknis kunjungan ke lokasi di Pasawahan, Kuningan, panitia siap melayani melalui kontak resmi sekretariat pondok. Komunikasi dapat dilakukan melalui WhatsApp di nomor 0895401985294 atau melalui surat elektronik pondokmoderniibselazam@gmail.com.</p>
-            </article>
+        <section class="section-block">
+            <div class="tab-header-line">
+                <span>Jadwal Pendaftaran &amp; Tes</span>
+            </div>
+
+            <div class="psb-table-wrap">
+                <table class="psb-table">
+                    <thead>
+                        <tr>
+                            <th>Tahap</th>
+                            <th>Waktu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="tahap-col">Pendaftaran Gelombang 1</td>
+                            <td>Tahun 2027 - informasi tanggal menyusul</td>
+                        </tr>
+                        <tr>
+                            <td class="tahap-col">Tes Gelombang 1</td>
+                            <td>Tahun 2027 - kolektif</td>
+                        </tr>
+                        <tr>
+                            <td class="tahap-col">Pendaftaran Gelombang 2</td>
+                            <td>Tahun 2027 - informasi tanggal menyusul</td>
+                        </tr>
+                        <tr>
+                            <td class="tahap-col">Tes Gelombang 2</td>
+                            <td>Tahun 2027 - mandiri</td>
+                        </tr>
+                        <tr>
+                            <td class="tahap-col">Kedatangan Santri Baru</td>
+                            <td>Tahun 2027</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="table-note">Tanggal lengkap dan pembaruan jadwal akan diinformasikan langsung oleh panitia penerimaan santri baru.</p>
 
             <div class="psb-cta-box">
                 <div>
-                    <strong>Formulir Pendaftaran Santri Baru</strong>
-                    <span>Lengkapi pendaftaran daring atau lihat rincian biaya dan perlengkapan santri.</span>
+                    <strong>Informasi Lanjutan Pendaftaran</strong>
+                    <span>Lihat rincian pembiayaan pendidikan dan perlengkapan santri sebelum mendaftar.</span>
                 </div>
                 <div class="psb-cta-actions">
-                    <a
-                      href="https://docs.google.com/forms/d/e/1FAIpQLScqXFZ52vTLcIygKnMtI5K5_jBDjHdJ_qKKoQYLFE7EmR-4Og/viewform"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="btn-daftar-page"
-                    >Buka Formulir PSB</a>
                     <a href="biaya.html" class="btn-outline-page">Info Pembiayaan</a>
                     <a href="perlengkapan.html" class="btn-outline-page">Perlengkapan Santri</a>
                 </div>
